@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 23:05:34 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/31 09:53:22 by romukena         ###   ########.fr       */
+/*   Updated: 2025/12/31 18:48:43 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ private:
 	std::string name;
 
 public:
-	Zombie(){};
+	Zombie();
 	~Zombie();
-	Zombie(std::string _name)
-	{
-		name = _name;
-	}
+	Zombie(std::string _name);
 	void announce(void);
 };
 
