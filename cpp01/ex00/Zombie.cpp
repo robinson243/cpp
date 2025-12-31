@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 01:27:13 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/31 07:30:26 by romukena         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:49:41 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ Zombie::~Zombie()
 
 void Zombie::announce(void)
 {
-	std::cout << getName() << ":" << " BraiiiiiiinnnzzzZ..." << std::endl; 
+	std::cout << name << ":" << " BraiiiiiiinnnzzzZ..." << std::endl; 
 }

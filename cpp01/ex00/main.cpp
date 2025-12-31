@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 01:30:45 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/31 07:15:44 by romukena         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:50:43 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
 	z->announce();
 
 	// tester la création automatique
-	randomChump("");
+	randomChump("zombiestack");
 	delete z;
 	return 0;
 }

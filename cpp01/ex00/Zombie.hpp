@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 23:05:34 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/31 01:38:07 by romukena         ###   ########.fr       */
+/*   Updated: 2025/12/31 09:53:22 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ public:
 	Zombie(std::string _name)
 	{
 		name = _name;
-	}
-	std::string	getName(void)
-	{
-		return name;
 	}
 	void announce(void);
 };
