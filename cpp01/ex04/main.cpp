@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:03:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/02 18:37:41 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/04 17:00:44 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,34 @@ int main(int ac, char **av)
 		return (1);
 	}
 	std::ifstream readfile(av[1]);
+	if (!readfile.is_open())
+	{
+		std::cerr << "Error: cannot open file " << av[1] << std::endl;
+		return 1;
+	}
 	std::string castArg = av[1];
 	std::string filename = castArg.append(".replace");
-	std::ofstream newfile(filename);
-	while (getline(readfile, buffer, '\0'))
+	std::ofstream newfile(filename.c_str());
+	std::string search = av[2];
+	if (search.empty())
 	{
-		newfile << buffer;
+		std::cerr << "Error: search string cannot be empty" << std::endl;
+		return 1;
+	}
+	std::string replaceStr = av[3];
+	std::string content;
+	while (getline(readfile, buffer))
+	{
+		content += buffer;
+		content += "\n";
+		size_t pos = 0;
+		while ((pos = buffer.find(search, pos)) != std::string::npos)
+		{
+			buffer.erase(pos, search.length());
+			buffer.insert(pos, replaceStr);
+			pos += search.length();
+		}
+		newfile << buffer << std::endl;
 	}
 	readfile.close();
 }
