@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:03:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/04 17:00:44 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/05 02:20:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main(int ac, char **av)
 		{
 			buffer.erase(pos, search.length());
 			buffer.insert(pos, replaceStr);
-			pos += search.length();
+			pos += replaceStr.length();
 		}
 		newfile << buffer << std::endl;
 	}
