@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:01:39 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/05 16:26:08 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:51:00 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,20 @@
 Harl::~Harl() {}
 Harl::Harl() {}
 
-void (Harl::*ptr_to_function)();
-
 void Harl::complain(std::string level)
 {
-	ptr_to_function = &Harl::debug;
-	// std::cout << level << std::endl;
+	void (Harl::*ptr_to_function[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string array[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	for (int i = 0; i < 4; i++)
+	{
+		if (array[i] == level)
+		{
+			(this->*ptr_to_function[i])();
+			return ;
+		}
+	}
+	std::cerr << "No Match !" << std::endl;
+	
 }
 
 void Harl::debug(void)

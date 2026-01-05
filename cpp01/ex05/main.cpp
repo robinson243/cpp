@@ -6,14 +6,17 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:18:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/05 16:23:23 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/05 18:45:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
+	if (ac != 2)
+		return (1);
 	Harl y;
-	y.complain("ello");
+	y.complain(av[1]);
+	return (0);
 }
