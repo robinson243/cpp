@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/29 14:39:09 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:06:56 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,65 @@ std::string truncate(std::string s)
 	return (s);
 }
 
-void Search(Phonebook repertoire, std::string number)
+void print_contact(Contact pb, int i)
+{
+	std::cout << std::setw(10);
+	std::cout << i;
+	std::cout << "|";
+
+	std::cout << std::setw(10);
+	std::cout << pb.get_firstname();
+	std::cout << "|";
+
+	std::cout << std::setw(10);
+	std::cout << pb.get_lastname();
+	std::cout << "|";
+
+	std::cout << std::setw(10);
+	std::cout << pb.get_nickname();
+	std::cout << "|" << std::endl;
+}
+
+void print_all(Phonebook poloe)
+{
+	Contact *pb = poloe.get_repertoire();
+	int i = 0;
+	while (i < poloe.get_index())
+	{
+		std::cout << std::setw(10);
+		std::cout << i;
+		std::cout << "|";
+
+		std::cout << std::setw(10);
+		std::cout << truncate(pb[i].get_firstname());
+		std::cout << "|";
+
+		std::cout << std::setw(10);
+		std::cout << truncate(pb[i].get_lastname());
+		std::cout << "|";
+
+		std::cout << std::setw(10);
+		std::cout << truncate(pb[i].get_nickname());
+		std::cout << "|" << std::endl;
+		i++;
+	}
+	return;
+}
+
+void Search(Phonebook repertoire)
 {
 	Contact *pb = repertoire.get_repertoire();
-	int index = atoi(number.c_str());
 
+	if (repertoire.get_index() == 0)
+	{
+		std::cout << "Pas de contact encore cree" << std::endl;
+		return;
+	}
+	print_all(repertoire);
+	std::string number;
+	std::cout << "Ecris un index > ";
+	std::getline(std::cin, number);
+	int index = atoi(number.c_str());
 	if (number.size() != 1 || !std::isdigit(number[0]))
 	{
 		std::cout << "Index non identifié" << std::endl;
@@ -65,37 +119,11 @@ void Search(Phonebook repertoire, std::string number)
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
-	if (index > repertoire.get_index())
+	if (index >= repertoire.get_index())
 	{
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
-	std::cout << std::setw(10);
-	std::cout << index;
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << truncate(pb[index].get_firstname());
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << truncate(pb[index].get_lastname());
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << truncate(pb[index].get_nickname());
-	std::cout << "|" << std::endl;
-	return;
-}
-
-void print_all(Phonebook poloe)
-{
-	Contact *pb = poloe.get_repertoire();
-	int i = 0;
-	while (i < poloe.get_index())
-	{
-		std::cout << pb[i].get_firstname() << std::endl;
-		i++;
-	}
+	print_contact(pb[index], index);
 	return;
 }

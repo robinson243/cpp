@@ -5,6 +5,6 @@
 
 Contact Add();
 std::string truncate(std::string s);
-void Search(Phonebook repertoire, std::string number);
+void Search(Phonebook repertoire);
 
 #endif

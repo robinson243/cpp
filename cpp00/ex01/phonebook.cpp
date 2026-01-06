@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 00:48:05 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/29 14:19:23 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/06 15:06:30 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int main(void)
 		}
 		if (input == "SEARCH")
 		{
-			std::string num;
-			std::cout << "Ecris un index > ";
-			std::getline(std::cin, num);
-			Search(pb, num);
+			Search(pb);
 		}
 		if (input == "EXIT")
 			break;
