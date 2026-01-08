@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/08 00:57:36 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/08 14:07:23 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ public:
 	Fixed();
 	~Fixed();
 	Fixed(const Fixed& object);
+	Fixed &operator=(const Fixed& object);
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
-	
 };
 
 
