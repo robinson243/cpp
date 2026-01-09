@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/08 18:21:15 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/09 00:28:37 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,11 @@ float Fixed::toFloat(void) const
 	float floatNumber = _integer / (float)(1 << _numberBits);
 	return (floatNumber);
 }
+
+int Fixed::toInt(void) const
+{
+	int intNumber = _integer /(int)(1 << _numberBits);
+	return intNumber;
+}
+
+// Fixed Fixed::operator<<(const Fixed &object);
