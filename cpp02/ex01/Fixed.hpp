@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/08 22:50:41 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:33:50 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public:
 	int toInt(void) const;
 	Fixed(const int num);
 	Fixed(const float num);
-	Fixed operator<<(const Fixed &object);
+	friend std::ostream& operator<<(std::ostream &os, const Fixed& object);
 };
 
 #endif

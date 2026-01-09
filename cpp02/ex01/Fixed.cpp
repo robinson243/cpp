@@ -6,11 +6,13 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/09 00:28:37 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/09 18:39:35 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::_numberBits = 8;
 
 Fixed::Fixed()
 {
@@ -23,19 +25,19 @@ Fixed::~Fixed()
 	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& object) : _integer(object.getRawBits())
+Fixed::Fixed(const Fixed &object) : _integer(object.getRawBits())
 {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& object)
+Fixed &Fixed::operator=(const Fixed &object)
 {
 	if (this != &object)
-    {
+	{
 		this->_integer = object.getRawBits();
-    }
+	}
 	std::cout << "Copy assignment operator called" << std::endl;
-    return *this;
+	return *this;
 }
 
 int Fixed::getRawBits(void) const
@@ -49,7 +51,7 @@ void Fixed::setRawBits(int const raw)
 	_integer = raw;
 }
 
-Fixed::Fixed(const int num) :_integer(num << _numberBits)
+Fixed::Fixed(const int num) : _integer(num << _numberBits)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
@@ -68,8 +70,12 @@ float Fixed::toFloat(void) const
 
 int Fixed::toInt(void) const
 {
-	int intNumber = _integer /(int)(1 << _numberBits);
+	int intNumber = _integer / (int)(1 << _numberBits);
 	return intNumber;
 }
 
-// Fixed Fixed::operator<<(const Fixed &object);
+std::ostream &operator<<(std::ostream &os, const Fixed &object)
+{
+	os << object.toFloat();
+	return os;
+}
