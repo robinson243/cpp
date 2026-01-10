@@ -6,6 +6,8 @@
 #include <string>
 #include <cstdlib>
 #include <cctype>
+#include <sstream>
+#include <string>
 
 class Contact
 {

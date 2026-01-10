@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/10 11:24:20 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:27:22 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,42 @@ Contact Add()
 {
 	std::string firstname;
 	std::string lastname;
-	std::string nickmame;
+	std::string nickname;
 	std::string input;
 	std::string secret;
-	std::cout << "Ecris le champ firstname : ";
-	std::getline(std::cin, firstname);
-	std::cout << "Ecris le champ lastname : ";
-	std::getline(std::cin, lastname);
-	std::cout << "Ecris le champ nickname : ";
-	std::getline(std::cin, nickmame);
-	while (1)
+
+	do
+	{
+		std::cout << "Ecris le champ firstname : ";
+		std::getline(std::cin, firstname);
+	} while (firstname.empty());
+
+	do
+	{
+		std::cout << "Ecris le champ lastname : ";
+		std::getline(std::cin, lastname);
+	} while (lastname.empty());
+
+	do
+	{
+		std::cout << "Ecris le champ nickname : ";
+		std::getline(std::cin, nickname);
+	} while (nickname.empty());
+
+	do
 	{
 		std::cout << "Ecris le champ number sans espace : ";
 		std::getline(std::cin, input);
-		if (input.length() < 10)
-			break;
-	}
-	std::cout << "Ecris le champ darkest secret : ";
-	std::getline(std::cin, secret);
-	Contact perso(firstname, lastname, nickmame, input, secret);
-	return (perso);
+	} while (input.empty());
+
+	do
+	{
+		std::cout << "Ecris le champ darkest secret : ";
+		std::getline(std::cin, secret);
+	} while (secret.empty());
+
+	Contact perso(firstname, lastname, nickname, input, secret);
+	return perso;
 }
 
 std::string truncate(std::string s)
@@ -52,18 +68,21 @@ std::string truncate(std::string s)
 
 void print_contact(Contact pb)
 {
-    std::cout << "First Name: " << pb.get_firstname() << std::endl;
-    std::cout << "Last Name: " << pb.get_lastname() << std::endl;
-    std::cout << "Nickname: " << pb.get_nickname() << std::endl;
-    std::cout << "Phone Number: " << pb.get_phone() << std::endl;
-    std::cout << "Darkest Secret: " << pb.get_secret() << std::endl;
+	std::cout << "First Name: " << pb.get_firstname() << std::endl;
+	std::cout << "Last Name: " << pb.get_lastname() << std::endl;
+	std::cout << "Nickname: " << pb.get_nickname() << std::endl;
+	std::cout << "Phone Number: " << pb.get_phone() << std::endl;
+	std::cout << "Darkest Secret: " << pb.get_secret() << std::endl;
 }
 
 void print_all(Phonebook poloe)
 {
 	Contact *pb = poloe.get_repertoire();
 	int i = 0;
-	while (i < poloe.get_index())
+	int index = poloe.get_index();
+	if (index > 8)
+		index = 8;
+	while (i < index)
 	{
 		std::cout << std::setw(10);
 		std::cout << i;
@@ -95,10 +114,13 @@ void Search(Phonebook repertoire)
 		return;
 	}
 	print_all(repertoire);
-	std::string number;
 	std::cout << "Ecris un index > ";
+	std::string number;
 	std::getline(std::cin, number);
-	int index = atoi(number.c_str());
+	std::stringstream ss(number);
+	int index;
+	if (ss >> index)
+		std::cout << "Index: " << index << std::endl;
 	if (number.size() != 1 || !std::isdigit(number[0]))
 	{
 		std::cout << "Index non identifié" << std::endl;
