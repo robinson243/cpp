@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/10 13:27:22 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:30:26 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void print_all(Phonebook poloe)
 	}
 	return;
 }
-
 void Search(Phonebook repertoire)
 {
 	Contact *pb = repertoire.get_repertoire();
@@ -113,29 +112,45 @@ void Search(Phonebook repertoire)
 		std::cout << "Pas de contact encore cree" << std::endl;
 		return;
 	}
+
 	print_all(repertoire);
+
 	std::cout << "Ecris un index > ";
 	std::string number;
 	std::getline(std::cin, number);
+
+	if (number.empty())
+	{
+		std::cout << "Index non identifié" << std::endl;
+		return;
+	}
+
 	std::stringstream ss(number);
 	int index;
-	if (ss >> index)
-		std::cout << "Index: " << index << std::endl;
+
+	if (!(ss >> index))
+	{
+		std::cout << "Index non identifié" << std::endl;
+		return;
+	}
+
 	if (number.size() != 1 || !std::isdigit(number[0]))
 	{
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
+
 	if (index < 0 || index > 7)
 	{
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
+
 	if (index >= repertoire.get_index())
 	{
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
+
 	print_contact(pb[index]);
-	return;
 }
