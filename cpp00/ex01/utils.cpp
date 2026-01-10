@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/10 13:30:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/10 14:29:14 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,36 @@ Contact Add()
 	do
 	{
 		std::cout << "Ecris le champ firstname : ";
-		std::getline(std::cin, firstname);
+		if (!std::getline(std::cin, firstname))
+			std::exit(0);
 	} while (firstname.empty());
 
 	do
 	{
 		std::cout << "Ecris le champ lastname : ";
-		std::getline(std::cin, lastname);
+		if (!std::getline(std::cin, lastname))
+			std::exit(0);
 	} while (lastname.empty());
 
 	do
 	{
 		std::cout << "Ecris le champ nickname : ";
-		std::getline(std::cin, nickname);
+		if (!std::getline(std::cin, nickname))
+			std::exit(0);
 	} while (nickname.empty());
 
 	do
 	{
 		std::cout << "Ecris le champ number sans espace : ";
-		std::getline(std::cin, input);
+		if (!std::getline(std::cin, input))
+			std::exit(0);
 	} while (input.empty());
 
 	do
 	{
 		std::cout << "Ecris le champ darkest secret : ";
-		std::getline(std::cin, secret);
+		if (!std::getline(std::cin, secret))
+			std::exit(0);
 	} while (secret.empty());
 
 	Contact perso(firstname, lastname, nickname, input, secret);
@@ -117,8 +122,9 @@ void Search(Phonebook repertoire)
 
 	std::cout << "Ecris un index > ";
 	std::string number;
-	std::getline(std::cin, number);
 
+	if (!std::getline(std::cin, number))
+		return;
 	if (number.empty())
 	{
 		std::cout << "Index non identifié" << std::endl;

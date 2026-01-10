@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 00:48:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/10 13:31:02 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/10 14:22:35 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ int main(void)
 		std::cout << "Ecris EXIT pour quitter le programme" << std::endl;
 		std::cout << "> ";
 
-		std::getline(std::cin, input);
-
+		if (!std::getline(std::cin, input))
+			break;
 		if (input.empty())
 			continue;
-
 		if (input == "ADD")
 		{
 			int count = pb.get_index() % 8;
@@ -47,4 +46,3 @@ int main(void)
 			break;
 	}
 }
-
