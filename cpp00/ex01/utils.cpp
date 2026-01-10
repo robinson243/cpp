@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/06 15:06:56 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:24:20 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,13 @@ std::string truncate(std::string s)
 	return (s);
 }
 
-void print_contact(Contact pb, int i)
+void print_contact(Contact pb)
 {
-	std::cout << std::setw(10);
-	std::cout << i;
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << pb.get_firstname();
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << pb.get_lastname();
-	std::cout << "|";
-
-	std::cout << std::setw(10);
-	std::cout << pb.get_nickname();
-	std::cout << "|" << std::endl;
+    std::cout << "First Name: " << pb.get_firstname() << std::endl;
+    std::cout << "Last Name: " << pb.get_lastname() << std::endl;
+    std::cout << "Nickname: " << pb.get_nickname() << std::endl;
+    std::cout << "Phone Number: " << pb.get_phone() << std::endl;
+    std::cout << "Darkest Secret: " << pb.get_secret() << std::endl;
 }
 
 void print_all(Phonebook poloe)
@@ -124,6 +114,6 @@ void Search(Phonebook repertoire)
 		std::cout << "Index non identifié" << std::endl;
 		return;
 	}
-	print_contact(pb[index], index);
+	print_contact(pb[index]);
 	return;
 }
