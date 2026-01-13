@@ -10,6 +10,7 @@ namespace jc
 	{
 	public:
 		time(std::size_t h, std::size_t m, std::size_t s);
+		time operator+(const time& other) const;
 	private:
 		std::size_t hours;
 		std::size_t minutes;

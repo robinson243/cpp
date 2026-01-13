@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 23:24:02 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/26 00:12:25 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:58:05 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int main(int ac, char **av)
 	}
 	for (int i = 1; i < ac; i++)
 		all_upper(av[i]);
+	std::cout << "\n";
 	return (0);
 }
