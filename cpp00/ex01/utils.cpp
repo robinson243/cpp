@@ -6,57 +6,81 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/10 14:29:14 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:45:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
 
+std::string read_field(const std::string &prompt, bool allow_spaces)
+{
+    std::string input;
+    size_t i;
+
+    while (1)
+    {
+        std::cout << prompt;
+        if (!std::getline(std::cin, input))
+            std::exit(0);
+
+        if (input.empty())
+            continue;
+
+        i = 0;
+        while (i < input.size() &&
+               std::isspace(static_cast<unsigned char>(input[i])))
+            i++;
+
+        if (i == input.size())
+            continue;
+
+        if (!allow_spaces)
+        {
+            i = 0;
+            while (i < input.size())
+            {
+                if (std::isspace(static_cast<unsigned char>(input[i])))
+                    break;
+                i++;
+            }
+            if (i != input.size())
+                continue;
+        }
+
+        // 🔧 TRIM ICI
+        size_t start = 0;
+        size_t end = input.size();
+
+        while (start < input.size() &&
+               std::isspace(static_cast<unsigned char>(input[start])))
+            start++;
+
+        while (end > start &&
+               std::isspace(static_cast<unsigned char>(input[end - 1])))
+            end--;
+
+        input = input.substr(start, end - start);
+
+        return input;
+    }
+}
+
+
 Contact Add()
 {
-	std::string firstname;
-	std::string lastname;
-	std::string nickname;
-	std::string input;
-	std::string secret;
+    std::string firstname;
+    std::string lastname;
+    std::string nickname;
+    std::string number;
+    std::string secret;
 
-	do
-	{
-		std::cout << "Ecris le champ firstname : ";
-		if (!std::getline(std::cin, firstname))
-			std::exit(0);
-	} while (firstname.empty());
+    firstname = read_field("Ecris le champ firstname : ", true);
+    lastname  = read_field("Ecris le champ lastname : ", true);
+    nickname  = read_field("Ecris le champ nickname : ", true);
+    number    = read_field("Ecris le champ number sans espace : ", false);
+    secret    = read_field("Ecris le champ darkest secret : ", true);
 
-	do
-	{
-		std::cout << "Ecris le champ lastname : ";
-		if (!std::getline(std::cin, lastname))
-			std::exit(0);
-	} while (lastname.empty());
-
-	do
-	{
-		std::cout << "Ecris le champ nickname : ";
-		if (!std::getline(std::cin, nickname))
-			std::exit(0);
-	} while (nickname.empty());
-
-	do
-	{
-		std::cout << "Ecris le champ number sans espace : ";
-		if (!std::getline(std::cin, input))
-			std::exit(0);
-	} while (input.empty());
-
-	do
-	{
-		std::cout << "Ecris le champ darkest secret : ";
-		if (!std::getline(std::cin, secret))
-			std::exit(0);
-	} while (secret.empty());
-
-	Contact perso(firstname, lastname, nickname, input, secret);
-	return perso;
+    return Contact(firstname, lastname, nickname, number, secret);
 }
 
 std::string truncate(std::string s)
