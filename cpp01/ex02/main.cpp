@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 21:04:50 by romukena          #+#    #+#             */
-/*   Updated: 2025/12/31 23:53:51 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:05:15 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int main(void)
 	std::cout << "-----------------------" << std::endl;
 
 	std::cout << "La valeur de la string " << word << std::endl;
-	std::cout << "La valeur de la stringPTR " << stringPTR << std::endl;
+	std::cout << "La valeur de la stringPTR " << *stringPTR << std::endl;
 	std::cout << "La valeur de la stringREF " << stringREF << std::endl;
 }

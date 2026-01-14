@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:03:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/14 16:16:21 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:09:41 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(int ac, char **av) {
 				  << std::endl;
 	}
 	std::string content;
+	bool first_line = true;
 	while (getline(readfile, buffer)) {
 		size_t pos = 0;
 		while ((pos = buffer.find(search, pos)) != std::string::npos) {
@@ -49,10 +50,14 @@ int main(int ac, char **av) {
 			buffer.insert(pos, replaceStr);
 			pos += replaceStr.length();
 		}
-		if (!(newfile << buffer << std::endl)) {
+		if (!first_line) {
+			newfile << '\n';
+		}
+		if (!(newfile << buffer)) {
 			std::cerr << "Error writing to file" << std::endl;
 			return 1;
 		}
+		first_line = false;
 	}
 	readfile.close();
 	newfile.close();
