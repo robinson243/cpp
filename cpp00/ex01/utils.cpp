@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/29 12:08:23 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/12 13:45:51 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/12 13:47:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ std::string read_field(const std::string &prompt, bool allow_spaces)
                 continue;
         }
 
-        // 🔧 TRIM ICI
         size_t start = 0;
         size_t end = input.size();
 

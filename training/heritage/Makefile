@@ -1,10 +1,9 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Weapon
+NAME = Perso
 
-SRC = HumanA.cpp  HumanB.cpp  Weapon.cpp  main.cpp
-
+SRC = perso.cpp  main2.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
