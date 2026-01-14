@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 21:27:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/13 21:32:19 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:04:39 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 
 public:
 	HumanB(std::string _Name);
-	void setWeapon(Weapon _nWeapon);
+	void setWeapon(Weapon &_nWeapon);
 	void attack();
 };
 
