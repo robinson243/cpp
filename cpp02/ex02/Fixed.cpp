@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/09 23:51:50 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/16 13:17:16 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ const int Fixed::_numberBits = 8;
 Fixed::Fixed()
 {
 	_integer = 0;
-	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &object) : _integer(object.getRawBits())
 {
-	// std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &object)
@@ -36,7 +33,6 @@ Fixed &Fixed::operator=(const Fixed &object)
 	{
 		this->_integer = object.getRawBits();
 	}
-	// std::cout << "Copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -65,7 +61,6 @@ float Fixed::max(const Fixed& a, const Fixed& b)
 
 int Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return _integer;
 }
 
@@ -76,13 +71,11 @@ void Fixed::setRawBits(int const raw)
 
 Fixed::Fixed(const int num) : _integer(num << _numberBits)
 {
-	// std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float num)
 {
 	_integer = roundf(num * (1 << _numberBits));
-	// std::cout << "Float constructor called" << std::endl;
 }
 
 float Fixed::toFloat(void) const

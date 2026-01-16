@@ -1,0 +1,21 @@
+Binaire vers decimal
+
+10011011 = 1 + 2 + 8 + 16 + 128 = 155
+
+| 1  | 0  | 0  | 1  | 1  | 0  | 1  | 1  |
+| 2^7| 2^6| 2^5| 2^4| 2^3| 2^2| 2^1| 2^0|
+
+multiplier chaque chiffre binaire par 2^position * binaryNumber
+
+decimal vers binaire 
+
+diviser par 2 jusqua que ce que le chiffre divise soit 0; mettre le modulo a la position;
+
+123 
+	= 123 % 2 = 1;
+	= 61 % 2 = 1;
+	= 30 % 2 = 0;
+	= 15 % 2 = 1;
+	= 7 % 2 = 1;
+	= 3 % 2 = 1;
+	= 1 % 2 = 1;
