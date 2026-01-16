@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/16 11:32:11 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/16 11:34:33 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ Fixed::Fixed(const Fixed &object){
 }
 
 Fixed &Fixed::operator=(const Fixed &object) {
-	// object.getRawBits();
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &object) {
 		this->_integer = object.getRawBits();
