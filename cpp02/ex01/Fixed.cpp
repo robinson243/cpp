@@ -6,11 +6,12 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/16 16:58:25 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:24:32 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <climits>
 
 const int Fixed::_numberBits = 8;
 
@@ -53,13 +54,36 @@ void Fixed::setRawBits(int const raw) {
 	_integer = raw;
 }
 
-Fixed::Fixed(const int num) : _integer(num * power(2, _numberBits)) {
+Fixed::Fixed(const int num) {
 	std::cout << "Int constructor called" << std::endl;
+
+	int factor = power(2, _numberBits);
+	int maxNum = INT_MAX / factor;
+	int minNum = INT_MIN / factor;
+
+	int safeNum = num;
+	if (num > maxNum)
+		safeNum = maxNum;
+	else if (num < minNum)
+		safeNum = minNum;
+
+	_integer = safeNum * factor;
 }
 
 Fixed::Fixed(const float num) {
-	_integer = roundf(num * power(2, _numberBits));
 	std::cout << "Float constructor called" << std::endl;
+
+	float maxNum = (float)(INT_MAX) / (float)(1 << _numberBits);
+	float minNum = (float)(INT_MIN) / (float)(1 << _numberBits);
+
+	float safeNum = num;
+
+	if (num > maxNum)
+		safeNum = maxNum;
+	else if (num < minNum)
+		safeNum = minNum;
+
+	_integer = roundf(safeNum * (1 << _numberBits));
 }
 
 float Fixed::toFloat(void) const {
