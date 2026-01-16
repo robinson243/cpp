@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/09 23:49:17 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:04:30 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ public:
 	static float max(const Fixed& a, const Fixed& b);
 	friend std::ostream& operator<<(std::ostream &os, const Fixed& object);
 };
+
+int power(int base, int exponent);
 
 #endif
