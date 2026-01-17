@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/16 17:24:32 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:33:40 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ Fixed::Fixed(const int num) {
 Fixed::Fixed(const float num) {
 	std::cout << "Float constructor called" << std::endl;
 
-	float maxNum = (float)(INT_MAX) / (float)(1 << _numberBits);
-	float minNum = (float)(INT_MIN) / (float)(1 << _numberBits);
+	float factor = power(2, _numberBits);
+	float maxNum = (float)INT_MAX / (float)factor;
+	float minNum = (float)INT_MIN / (float)factor;
 
 	float safeNum = num;
 
@@ -83,7 +84,7 @@ Fixed::Fixed(const float num) {
 	else if (num < minNum)
 		safeNum = minNum;
 
-	_integer = roundf(safeNum * (1 << _numberBits));
+	_integer = roundf(safeNum * factor);
 }
 
 float Fixed::toFloat(void) const {

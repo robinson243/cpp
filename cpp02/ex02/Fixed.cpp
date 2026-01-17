@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/16 17:26:35 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:34:05 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void Fixed::setRawBits(int const raw) {
 }
 
 Fixed::Fixed(const int num) {
+	std::cout << "Int constructor called" << std::endl;
+
 	int factor = power(2, _numberBits);
 	int maxNum = INT_MAX / factor;
 	int minNum = INT_MIN / factor;
@@ -82,8 +84,11 @@ Fixed::Fixed(const int num) {
 }
 
 Fixed::Fixed(const float num) {
-	float maxNum = (float)(INT_MAX) / (float)(1 << _numberBits);
-	float minNum = (float)(INT_MIN) / (float)(1 << _numberBits);
+	std::cout << "Float constructor called" << std::endl;
+
+	float factor = power(2, _numberBits);
+	float maxNum = (float)INT_MAX / (float)factor;
+	float minNum = (float)INT_MIN / (float)factor;
 
 	float safeNum = num;
 
@@ -92,7 +97,7 @@ Fixed::Fixed(const float num) {
 	else if (num < minNum)
 		safeNum = minNum;
 
-	_integer = roundf(safeNum * (1 << _numberBits));
+	_integer = roundf(safeNum * factor);
 }
 
 float Fixed::toFloat(void) const {
