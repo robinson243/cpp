@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:15:42 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 11:16:01 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 11:44:28 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	ClapTrap();
 	~ClapTrap();
 	ClapTrap &operator=(const ClapTrap &other);
+	ClapTrap(const ClapTrap &other);
 	void attack(const std::string &target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
