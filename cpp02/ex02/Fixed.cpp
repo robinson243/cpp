@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 15:53:14 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 16:32:52 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int power(int base, int exponent) {
 
 Fixed::Fixed() {
 	_integer = 0;
+}
+
+Fixed::~Fixed() {
 }
 
 Fixed::Fixed(const Fixed &object) : _integer(object.getRawBits()) {
@@ -112,10 +115,46 @@ bool Fixed::operator!=(const Fixed &other) const {
 	return this->getRawBits() != other.getRawBits();
 }
 
+Fixed Fixed::operator+(const Fixed &other) const {
+	int raw = this->getRawBits() + other.getRawBits();
+	Fixed res;
+	res.setRawBits(raw);
+	return res;
+}
 
+Fixed Fixed::operator-(const Fixed &other) const {
+	int raw = this->getRawBits() - other.getRawBits();
+	Fixed res;
+	res.setRawBits(raw);
+	return res;
+}
 
 Fixed Fixed::operator*(const Fixed &other) const {
-	return this->toFloat() * other.toFloat();
+	int64_t raw =
+		(this->getRawBits() * other.getRawBits()) / power(2, _numberBits);
+	if (raw > INT_MAX || raw < INT_MIN) {
+		std::cerr << "ERROR : big number my friend" << std::endl;
+		return (Fixed());
+	}
+	Fixed res;
+	res.setRawBits(raw);
+	return res;
+}
+
+Fixed Fixed::operator/(const Fixed &other) const {
+	int64_t raw =
+		(this->getRawBits() * power(2, _numberBits)) / other.getRawBits();
+	if (raw > INT_MAX || raw < INT_MIN) {
+		std::cerr << "ERROR : big number my friend" << std::endl;
+		return (Fixed());
+	}
+	if (other.getRawBits() == 0) {
+		std::cerr << "ERROR : can't divide by 0" << std::endl;
+		return (Fixed());
+	}
+	Fixed res;
+	res.setRawBits(raw);
+	return res;
 }
 
 Fixed &Fixed::operator++() {
@@ -129,8 +168,23 @@ Fixed Fixed::operator++(int) {
 	return copy;
 }
 
+Fixed &Fixed::operator--() {
+	_integer -= 1;
+	return *this;
+}
+
+Fixed Fixed::operator--(int) {
+	Fixed copy = *this;
+	(*this)._integer -= 1;
+	return copy;
+}
+
 float Fixed::max(const Fixed &a, const Fixed &b) {
 	return a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat();
+}
+
+float Fixed::min(const Fixed &a, const Fixed &b) {
+	return a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat();
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &object) {

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 15:52:55 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 16:33:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,21 @@ public:
 	Fixed(const int num);
 	Fixed(const float num);
 	bool operator>(const Fixed &other) const;
-	bool Fixed::operator<(const Fixed &other) const;
-	bool Fixed::operator>=(const Fixed &other) const;
-	bool Fixed::operator<=(const Fixed &other) const;
-	bool Fixed::operator==(const Fixed &other) const;
-	bool Fixed::operator!=(const Fixed &other) const;
+	bool operator<(const Fixed &other) const;
+	bool operator>=(const Fixed &other) const;
+	bool operator<=(const Fixed &other) const;
+	bool operator==(const Fixed &other) const;
+	bool operator!=(const Fixed &other) const;
 	Fixed operator*(const Fixed& other) const;
-	Fixed operator++(int i);
+	Fixed operator/(const Fixed& other) const;
+	Fixed operator+(const Fixed& other) const;
+	Fixed operator-(const Fixed& other) const;
+	Fixed operator++(int);
 	Fixed& operator++();
+	Fixed operator--(int);
+	Fixed& operator--();
 	static float max(const Fixed& a, const Fixed& b);
+	static float min(const Fixed& a, const Fixed& b);
 	friend std::ostream& operator<<(std::ostream &os, const Fixed& object);
 };
 
