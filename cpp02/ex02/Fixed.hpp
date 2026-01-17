@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/16 17:19:02 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:52:55 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ public:
 	int toInt(void) const;
 	Fixed(const int num);
 	Fixed(const float num);
+	bool operator>(const Fixed &other) const;
+	bool Fixed::operator<(const Fixed &other) const;
+	bool Fixed::operator>=(const Fixed &other) const;
+	bool Fixed::operator<=(const Fixed &other) const;
+	bool Fixed::operator==(const Fixed &other) const;
+	bool Fixed::operator!=(const Fixed &other) const;
 	Fixed operator*(const Fixed& other) const;
 	Fixed operator++(int i);
 	Fixed& operator++();

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 15:34:05 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:53:14 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,7 @@ Fixed::Fixed() {
 	_integer = 0;
 }
 
-Fixed::~Fixed() {
-}
-
 Fixed::Fixed(const Fixed &object) : _integer(object.getRawBits()) {
-}
-
-Fixed &Fixed::operator=(const Fixed &object) {
-	if (this != &object) {
-		this->_integer = object.getRawBits();
-	}
-	return *this;
-}
-
-Fixed Fixed::operator*(const Fixed &other) const {
-	return this->toFloat() * other.toFloat();
-}
-
-Fixed &Fixed::operator++() {
-	_integer += 1;
-	return *this;
-}
-
-Fixed Fixed::operator++(int) {
-	Fixed copy = *this;
-	(*this)._integer += 1;
-	return copy;
-}
-
-float Fixed::max(const Fixed &a, const Fixed &b) {
-	return a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat();
 }
 
 int Fixed::getRawBits(void) const {
@@ -108,6 +79,58 @@ float Fixed::toFloat(void) const {
 int Fixed::toInt(void) const {
 	int intNumber = _integer / (int)power(2, _numberBits);
 	return intNumber;
+}
+
+Fixed &Fixed::operator=(const Fixed &object) {
+	if (this != &object) {
+		this->_integer = object.getRawBits();
+	}
+	return *this;
+}
+
+bool Fixed::operator>(const Fixed &other) const {
+	return this->getRawBits() > other.getRawBits();
+}
+
+bool Fixed::operator<(const Fixed &other) const {
+	return this->getRawBits() < other.getRawBits();
+}
+
+bool Fixed::operator>=(const Fixed &other) const {
+	return this->getRawBits() >= other.getRawBits();
+}
+
+bool Fixed::operator<=(const Fixed &other) const {
+	return this->getRawBits() <= other.getRawBits();
+}
+
+bool Fixed::operator==(const Fixed &other) const {
+	return this->getRawBits() == other.getRawBits();
+}
+
+bool Fixed::operator!=(const Fixed &other) const {
+	return this->getRawBits() != other.getRawBits();
+}
+
+
+
+Fixed Fixed::operator*(const Fixed &other) const {
+	return this->toFloat() * other.toFloat();
+}
+
+Fixed &Fixed::operator++() {
+	_integer += 1;
+	return *this;
+}
+
+Fixed Fixed::operator++(int) {
+	Fixed copy = *this;
+	(*this)._integer += 1;
+	return copy;
+}
+
+float Fixed::max(const Fixed &a, const Fixed &b) {
+	return a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat();
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &object) {
