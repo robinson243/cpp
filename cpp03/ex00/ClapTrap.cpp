@@ -6,13 +6,18 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:20:47 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 11:23:50 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/17 11:34:32 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string _Nname) {
+	if (_Nname.empty())
+	{
+		std::cerr << "error name is empty" << std::endl;
+		return ;
+	}
 	_name = _Nname;
 	_hitPoints = 10;
 	_energyPoints = 10;
@@ -22,12 +27,12 @@ ClapTrap::ClapTrap(std::string _Nname) {
 ClapTrap::ClapTrap() {
 }
 ClapTrap::~ClapTrap() {
+	if (this)
+		std::cout << "ClapTrap " << this->_name << " is detroyed" << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
-{
-	if (this != &other)
-	{
+ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
+	if (this != &other) {
 		this->_name = other._name;
 		this->_attackDamage = other._attackDamage;
 		this->_hitPoints = other._hitPoints;
