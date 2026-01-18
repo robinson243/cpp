@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 11:51:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/18 14:40:16 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/18 16:03:12 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ public:
 	~ScavTrap();
 	ScavTrap(const std::string &_Nname);
 	ScavTrap(const ScavTrap &other);
+	void attack(const std::string &target); 
 	ScavTrap &operator=(const ScavTrap &other);
 	void guardGate();
 };

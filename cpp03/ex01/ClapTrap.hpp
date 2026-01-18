@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:15:42 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/18 14:39:48 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/18 16:04:02 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ protected:
 public:
 	ClapTrap(std::string _Nname);
 	ClapTrap();
-	~ClapTrap();
+	virtual ~ClapTrap();
 	ClapTrap &operator=(const ClapTrap &other);
 	ClapTrap(const ClapTrap &other);
 	void attack(const std::string &target);
