@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 14:08:18 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/18 14:35:52 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/18 15:01:13 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,38 @@
 
 int main()
 {
-	// 1. Création par défaut
-	ScavTrap a;
+    std::cout << "=== Création d'objets ===" << std::endl;
 
-	// 2. Création avec un nom
-	ScavTrap b("RoboGuard");
+    ScavTrap a;                         // default constructor
+    ScavTrap b("RoboGuard");            // param constructor
+    ScavTrap c(b);                       // copy constructor
+    ScavTrap d("TempBot");              
+    ScavTrap e;                         
 
-	// 3. Appel de l'attaque
-	a.attack("un ennemi"); // message spécifique à ScavTrap si redéfini
-	b.attack("un autre ennemi");
+    std::cout << "\n=== Tests d'attaque ===" << std::endl;
+    a.attack("enemy1");                  // default name
+    b.attack("enemy2");                  // named
+    c.attack("enemy3");                  // copy of b
+    d.attack("enemy4");                  // named
+    e.attack("enemy5");                  // default
 
-	// 4. Capacité spéciale
-	a.guardGate();
-	b.guardGate();
+    std::cout << "\n=== Tests de guardGate ===" << std::endl;
+    a.guardGate();                       // no name
+    b.guardGate();                       // named
+    c.guardGate();                       // copy
+    d.guardGate();                       // named
+    e.guardGate();                       // no name
 
-	// 5. Copie
-	ScavTrap c(b); // constructeur de copie
-	c.guardGate();
+    std::cout << "\n=== Tests d'opérateur= ===" << std::endl;
+    a = b;                               // assign named to default
+    a.guardGate();                       // doit maintenant afficher b's name
 
-	// 6. Opérateur=
-	a = c;
-	a.guardGate();
+    e = c;                               // assign copy to default
+    e.guardGate();                       // doit afficher c's name
 
-	// 7. Destruction automatique à la fin du main
-	// Les messages de destruction doivent montrer :
-	// c puis b puis a (ou dans l’ordre inverse de création)
+    std::cout << "\n=== Création et destruction de temporaires ===" << std::endl;
+    ScavTrap("Tempory").guardGate();     // temporary object, destruction immédiate
 
-	return 0;
+    std::cout << "\n=== Fin du programme ===" << std::endl;
+    return 0;
 }
