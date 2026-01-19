@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 00:20:47 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/18 14:57:40 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:06:20 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->_name << " is detroyed" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " is destroyed" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
