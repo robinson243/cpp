@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:08:36 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 16:32:52 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:16:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,16 +142,17 @@ Fixed Fixed::operator*(const Fixed &other) const {
 }
 
 Fixed Fixed::operator/(const Fixed &other) const {
+	if (other.getRawBits() == 0) {
+		std::cerr << "ERROR : can't divide by 0" << std::endl;
+		return (Fixed());
+	}
 	int64_t raw =
 		(this->getRawBits() * power(2, _numberBits)) / other.getRawBits();
 	if (raw > INT_MAX || raw < INT_MIN) {
 		std::cerr << "ERROR : big number my friend" << std::endl;
 		return (Fixed());
 	}
-	if (other.getRawBits() == 0) {
-		std::cerr << "ERROR : can't divide by 0" << std::endl;
-		return (Fixed());
-	}
+
 	Fixed res;
 	res.setRawBits(raw);
 	return res;
@@ -179,12 +180,20 @@ Fixed Fixed::operator--(int) {
 	return copy;
 }
 
-float Fixed::max(const Fixed &a, const Fixed &b) {
-	return a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat();
+Fixed &Fixed::max(Fixed &a, Fixed &b) {
+	return a > b ? a : b;
 }
 
-float Fixed::min(const Fixed &a, const Fixed &b) {
-	return a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat();
+Fixed &Fixed::min(Fixed &a, Fixed &b) {
+	return a < b ? a : b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+	return a > b ? a : b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+	return a < b ? a : b;
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &object) {

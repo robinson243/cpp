@@ -6,23 +6,22 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 18:06:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/17 16:33:07 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:16:17 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
-class Fixed
-{
-private:
+class Fixed {
+  private:
 	int _integer;
 	const static int _numberBits;
 
-public:
+  public:
 	Fixed();
 	~Fixed();
 	Fixed(const Fixed &object);
@@ -39,17 +38,19 @@ public:
 	bool operator<=(const Fixed &other) const;
 	bool operator==(const Fixed &other) const;
 	bool operator!=(const Fixed &other) const;
-	Fixed operator*(const Fixed& other) const;
-	Fixed operator/(const Fixed& other) const;
-	Fixed operator+(const Fixed& other) const;
-	Fixed operator-(const Fixed& other) const;
+	Fixed operator*(const Fixed &other) const;
+	Fixed operator/(const Fixed &other) const;
+	Fixed operator+(const Fixed &other) const;
+	Fixed operator-(const Fixed &other) const;
 	Fixed operator++(int);
-	Fixed& operator++();
+	Fixed &operator++();
 	Fixed operator--(int);
-	Fixed& operator--();
-	static float max(const Fixed& a, const Fixed& b);
-	static float min(const Fixed& a, const Fixed& b);
-	friend std::ostream& operator<<(std::ostream &os, const Fixed& object);
+	Fixed &operator--();
+	static Fixed &min(Fixed &a, Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
+	friend std::ostream &operator<<(std::ostream &os, const Fixed &object);
 };
 
 int power(int base, int exponent);
