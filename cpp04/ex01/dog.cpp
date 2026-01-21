@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:17:03 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 15:49:53 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:08:49 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ Dog &Dog::operator=(const Dog &other)
 		std::cout << "Copy Dog is assigned" << std::endl;
 	}
 	return *this;
-}
-
-std::string Dog::getType() const
-{
-	return this->_type;
 }
 
 void Dog::makeSound() const

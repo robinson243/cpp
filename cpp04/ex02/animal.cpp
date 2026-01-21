@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:04:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 16:00:15 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:05:40 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,9 @@ AAnimal &AAnimal::operator=(const AAnimal &other)
 		std::cout << "Copy Animal is assigned" << std::endl;
 	}
 	return *this;
+}
+
+std::string AAnimal::getType() const
+{
+	return this->_type;
 }

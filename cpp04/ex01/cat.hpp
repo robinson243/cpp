@@ -15,7 +15,6 @@ public:
 	virtual ~Cat();
 	Cat(const Cat &other);
 	Cat &operator=(const Cat &other);
-	virtual std::string getType() const;
 	virtual void makeSound() const;
 };
 

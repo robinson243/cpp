@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:09:06 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 16:00:48 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:06:44 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,6 @@ Cat &Cat::operator=(const Cat &other)
 		std::cout << "Copy Cat is assigned" << std::endl;
 	}
 	return *this;
-}
-
-std::string Cat::getType() const
-{
-	return this->_type;
 }
 
 void Cat::makeSound() const
