@@ -6,30 +6,30 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:04:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 00:07:42 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:00:15 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animal.hpp"
 
-Animal::Animal()
+AAnimal::AAnimal()
 {
 	_type = "Animal";
 	std::cout << "Animal is create" << std::endl;
 }
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
 	std::cout << "Animal is dead" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+AAnimal::AAnimal(const AAnimal &other)
 {
 	*this = other;
 	std::cout << "Copy Animal is create" << std::endl;
 }
 
-Animal &Animal::operator=(const Animal &other)
+AAnimal &AAnimal::operator=(const AAnimal &other)
 {
 	if (this != &other)
 	{
@@ -37,14 +37,4 @@ Animal &Animal::operator=(const Animal &other)
 		std::cout << "Copy Animal is assigned" << std::endl;
 	}
 	return *this;
-}
-
-std::string Animal::getType() const
-{
-	return this->_type;
-}
-
-void Animal::makeSound() const
-{
-	std::cout << "HEY HO !" << std::endl;
 }

@@ -6,13 +6,13 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:09:06 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 01:27:39 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:00:48 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cat.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	_type = "Cat";
 	_attribute = new Brain();
@@ -25,7 +25,7 @@ Cat::~Cat()
 	std::cout << "Cat is dead" << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal(other)
+Cat::Cat(const Cat &other) : AAnimal(other)
 {
 	this->_attribute = new Brain(*other._attribute);
 	std::cout << "Copy Cat is create" << std::endl;
@@ -35,7 +35,7 @@ Cat &Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		AAnimal::operator=(other);
 		delete this->_attribute;
 		this->_attribute = new Brain(*other._attribute);
 		std::cout << "Copy Cat is assigned" << std::endl;

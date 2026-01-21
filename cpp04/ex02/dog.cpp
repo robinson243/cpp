@@ -6,13 +6,13 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:17:03 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 15:35:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:01:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	_type = "Dog";
 	_attribute = new Brain();
@@ -25,7 +25,7 @@ Dog::~Dog()
 	delete _attribute;
 }
 
-Dog::Dog(const Dog &other) : Animal(other)
+Dog::Dog(const Dog &other) : AAnimal(other)
 {
 	this->_attribute = new Brain(*other._attribute);
 	std::cout << "Copy Dog is create" << std::endl;
@@ -35,7 +35,7 @@ Dog &Dog::operator=(const Dog &other)
 {
 	if (this != &other)
 	{
-		Animal::operator=(other);
+		AAnimal::operator=(other);
 		delete this->_attribute;
 		this->_attribute = new Brain(*other._attribute);
 		std::cout << "Copy Dog is assigned" << std::endl;
