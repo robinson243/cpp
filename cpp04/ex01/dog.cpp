@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:17:03 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 01:32:27 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:49:53 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Dog::Dog() : Animal()
 
 Dog::~Dog()
 {
+	delete _attribute;
 	std::cout << "Dog is dead" << std::endl;
 }
 
