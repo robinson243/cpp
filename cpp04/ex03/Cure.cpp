@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/22 13:15:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 18:52:03 by romukena         ###   ########.fr       */
+/*   Created: 2026/01/22 13:43:39 by romukena          #+#    #+#             */
+/*   Updated: 2026/01/22 14:07:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Cure.hpp"
 
-Ice::Ice() {
-	_type = "ice";
+Cure::Cure() {
+	_type = "cure";
 }
 
-Ice::~Ice() {
+Cure::~Cure() {
 }
 
-Ice::Ice(const Ice &other) : AMateria(other) {
+Cure::Cure(const Cure &other) : AMateria(other) {
 }
 
-Ice &Ice::operator=(const Ice &other) {
+Cure &Cure::operator=(const Cure &other) {
 	AMateria::operator=(other);
 	return *this;
 }
 
-void Ice::use(ICharacter &target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *"
-			  << std::endl;
+void Cure::use(ICharacter &target) {
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
 
-Ice *Ice::clone() const {
-	Ice *copy = new Ice;
+Cure *Cure::clone() const {
+	Cure *copy = new Cure;
 	return copy;
 }

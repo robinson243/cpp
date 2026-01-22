@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/21 17:26:34 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 13:18:39 by romukena         ###   ########.fr       */
+/*   Created: 2026/01/22 13:53:24 by romukena          #+#    #+#             */
+/*   Updated: 2026/01/22 18:47:03 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-#define AMATERIA_HPP
-
 #include "ICharacter.hpp"
-#include <iostream>
 
-class AMateria {
-  protected:
-	std::string _type;
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
+class Character : public ICharacter {
+  private:
+	std::string _name;
+	AMateria *_inventory[4];
   public:
-	AMateria();
-	virtual ~AMateria();
-	AMateria &operator=(const AMateria &other);
-	AMateria(const AMateria &other);
-	std::string const &getType() const;
-	virtual AMateria *clone() const = 0;
-	virtual void use(ICharacter &target);
+	Character();
+	~Character();
+	Character(const Character &other);
+	Character &operator=(const Character &other);
+	Character(const std::string &_otherName);
+
+	virtual std::string const &getName() const;
+	virtual void equip(AMateria *m);
+	virtual void unequip(int idx);
+	virtual void use(int idx, ICharacter &target);
 };
 
 #endif

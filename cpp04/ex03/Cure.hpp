@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/22 13:15:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 18:52:03 by romukena         ###   ########.fr       */
+/*   Created: 2026/01/22 13:42:39 by romukena          #+#    #+#             */
+/*   Updated: 2026/01/22 14:10:47 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
 
-Ice::Ice() {
-	_type = "ice";
-}
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include <iostream>
 
-Ice::~Ice() {
-}
+class Cure : public AMateria {
+  public:
+	Cure();
+	~Cure();
+	Cure &operator=(const Cure &other);
+	Cure(const Cure &other);
+	virtual Cure *clone() const;
+	virtual void use(ICharacter& target);
+	
+};
 
-Ice::Ice(const Ice &other) : AMateria(other) {
-}
-
-Ice &Ice::operator=(const Ice &other) {
-	AMateria::operator=(other);
-	return *this;
-}
-
-void Ice::use(ICharacter &target) {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *"
-			  << std::endl;
-}
-
-Ice *Ice::clone() const {
-	Ice *copy = new Ice;
-	return copy;
-}
+#endif

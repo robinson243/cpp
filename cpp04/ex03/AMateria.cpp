@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:48:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 17:57:51 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/22 15:09:38 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,10 @@ AMateria::AMateria(const AMateria &other) {
 		this->_type = other._type;
 }
 
-std::string AMateria::&getType() const {
+std::string const &AMateria::getType() const {
+	return _type;
+}
+
+void AMateria::use(ICharacter &target) {
+	std::cout << "That's my " << target.getName() << " !" << std::endl;
 }
