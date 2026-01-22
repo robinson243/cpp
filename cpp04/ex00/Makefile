@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Animal
+NAME = AnimalReedition
 
 SRC = animal.cpp  cat.cpp  dog.cpp  main.cpp
 OBJ = $(SRC:.cpp=.o)
