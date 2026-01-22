@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 18:14:21 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 18:51:04 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:54:25 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ Character &Character::operator=(const Character &other) {
 }
 
 Character::Character(const std::string &_otherName) : _name(_otherName) {
+	for (int i = 0; i < 4; i++) {
+		this->_inventory[i] = NULL;
+	}
 }
 
 std::string const &Character::getName() const {

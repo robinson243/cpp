@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 14:39:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 18:51:28 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:58:13 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void MateriaSource::learnMateria(AMateria *target) {
 	for (int i = 0; i < 4; i++) {
 		if (this->_materias[i] == NULL) {
 			this->_materias[i] = target->clone();
+			delete target;
 			break;
 		}
 	}
