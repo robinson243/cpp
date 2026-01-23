@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 23:04:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/21 00:07:42 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:03:36 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ Animal::~Animal()
 	std::cout << "Animal is dead" << std::endl;
 }
 
-Animal::Animal(const Animal &other)
+Animal::Animal(const Animal &other) :_type(other._type)
 {
-	*this = other;
 	std::cout << "Copy Animal is create" << std::endl;
 }
 

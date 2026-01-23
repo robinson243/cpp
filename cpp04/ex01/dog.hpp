@@ -12,7 +12,7 @@ private:
 
 public:
 	Dog();
-	~Dog();
+	virtual ~Dog();
 	Dog(const Dog &other);
 	Dog &operator=(const Dog &other);
 	virtual void makeSound() const;

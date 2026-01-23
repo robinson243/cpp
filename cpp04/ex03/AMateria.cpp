@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:48:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 15:09:38 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:16:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ AMateria &AMateria::operator=(const AMateria &other) {
 	return *this;
 }
 AMateria::AMateria(const AMateria &other) {
-	if (this != &other)
-		this->_type = other._type;
+	this->_type = other._type;
 }
 
 std::string const &AMateria::getType() const {

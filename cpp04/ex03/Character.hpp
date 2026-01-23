@@ -6,19 +6,20 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 13:53:24 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/22 18:47:03 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:13:12 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ICharacter.hpp"
-
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
+
+#include "ICharacter.hpp"
 
 class Character : public ICharacter {
   private:
 	std::string _name;
 	AMateria *_inventory[4];
+
   public:
 	Character();
 	~Character();

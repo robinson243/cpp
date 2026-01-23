@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = AnimalReedition
 
-SRC = animal.cpp  cat.cpp  dog.cpp  main.cpp
+SRC = animal.cpp  cat.cpp  dog.cpp wronganimal.cpp wrongcat.cpp  main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
