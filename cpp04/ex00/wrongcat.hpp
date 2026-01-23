@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.hpp                                            :+:      :+:    :+:   */
+/*   wrongcat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/23 12:55:45 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/23 12:55:46 by romukena         ###   ########.fr       */
+/*   Created: 2026/01/23 12:56:02 by romukena          #+#    #+#             */
+/*   Updated: 2026/01/23 13:02:10 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "animal.hpp"
+#include "wronganimal.hpp"
 #include <iostream>
 
-class Cat : public Animal
-{
-public:
-	Cat();
-	virtual ~Cat();
-	Cat(const Cat &other);
-	Cat &operator=(const Cat &other);
-	virtual std::string getType() const;
-	virtual void makeSound() const;
+class WrongCat : public WrongAnimal {
+  public:
+	WrongCat();
+	virtual ~WrongCat();
+	WrongCat(const WrongCat &other);
+	WrongCat &operator=(const WrongCat &other);
+	std::string getType() const;
+	void makeSound() const;
 };
 
 #endif
