@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:56:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/01/23 13:02:10 by romukena         ###   ########.fr       */
+/*   Updated: 2026/01/24 11:48:59 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class WrongCat : public WrongAnimal {
   public:
 	WrongCat();
-	virtual ~WrongCat();
+	~WrongCat();
 	WrongCat(const WrongCat &other);
 	WrongCat &operator=(const WrongCat &other);
 	std::string getType() const;
