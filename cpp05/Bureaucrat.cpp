@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/23 13:31:38 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:35:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,13 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other)
 }
 
 Bureaucrat::Bureaucrat(std::string _otherName, int _otherGrade)
-	: _name(_otherName), _grade(_otherGrade) {
+	: _name(_otherName) {
+	if (_otherGrade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (_otherGrade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		_grade = _otherGrade;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
