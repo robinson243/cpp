@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/25 13:35:01 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/25 14:07:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,23 @@ std::string Bureaucrat::getName() {
 
 int Bureaucrat::getGrade() {
 	return (this->_grade);
+}
+
+void Bureaucrat::incrementGrade() {
+	if (this->_grade <= 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		this->_grade--;
+}
+
+void Bureaucrat::decrementGrade() {
+	if (this->_grade >= 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade++;
+}
+
+std::ostream &operator<<(std::ostream &os, Bureaucrat &object) {
+	os << object.getName() << ", bureaucrat grade " << object.getGrade();
+	return os;
 }
