@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:48:14 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/25 15:09:39 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/26 14:38:38 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Form {
 	~Form();
 	Form(const Form &other);
 	Form &operator=(const Form &other);
+	Form(std::string _newName, bool _isSigned, int _newExGrade, int _newSiGrade);
 	std::string getName;
 	bool getSigned;
 	int getExecGrade;
