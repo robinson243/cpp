@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/26 14:33:36 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/27 15:36:55 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,18 @@ void Bureaucrat::decrementGrade() {
 std::ostream &operator<<(std::ostream &os, Bureaucrat &object) {
 	os << object.getName() << ", bureaucrat grade " << object.getGrade();
 	return os;
+}
+
+void Bureaucrat::signForm(Form &object) {
+	if (!object.getName().empty()) {
+		try {
+			if (this->getGrade() <= object.getSignGrade()) {
+				object.beSigned(*this);
+			}
+			std::cout << this->getName() << " signed " << object.getName();
+		} catch (const std::exception &e) {
+			std::cerr << this->getName() << " couldn’t sign "
+					  << object.getName() << " because " << e.what() << '\n';
+		}
+	}
 }

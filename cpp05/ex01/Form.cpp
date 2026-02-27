@@ -6,11 +6,12 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:48:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/26 17:24:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/27 15:37:03 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
 	: _name("No name"), _signed(false), _execGrade(150), _signGrade(150) {
@@ -19,11 +20,8 @@ Form::Form()
 Form::~Form() {
 }
 
-Form::Form(std::string _newName,
-		   bool _isSigned,
-		   int _newExGrade,
-		   int _newSiGrade)
-	: _name(_newName), _signed(_isSigned), _execGrade(_newExGrade),
+Form::Form(std::string _newName, int _newExGrade, int _newSiGrade)
+	: _name(_newName), _signed(false), _execGrade(_newExGrade),
 	  _signGrade(_newSiGrade) {
 	if (_newSiGrade < 1 || _newExGrade < 1)
 		throw GradeTooHighException();
@@ -54,13 +52,20 @@ int Form::getSignGrade() {
 }
 
 std::ostream &operator<<(std::ostream &os, Form &object) {
-	os << "Form " << object.getName() << " is signed : " << object.getSigned()
-	   << " execGrade : " << object.getExecGrade()
-	   << " and signGrade : " << object.getSignGrade();
+	if (!object.getName().empty()) {
+		os << "Form " << object.getName()
+		   << " is signed : " << object.getSigned()
+		   << " execGrade : " << object.getExecGrade()
+		   << " and signGrade : " << object.getSignGrade();
+	}
 	return os;
 }
 
-void Form::beSigned(Bureaucrat object)
-{
-    
+void Form::beSigned(Bureaucrat &object) {
+	if (!object.getName().empty()) {
+		if (object.getGrade() <= this->getSignGrade()) {
+			this->_signed = true;
+		} else
+			throw GradeTooLowException();
+	}
 }
