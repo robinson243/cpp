@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 14:48:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/27 15:37:03 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/27 17:15:59 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ Form::Form()
 Form::~Form() {
 }
 
+Form::Form(const Form &other)
+	: _name(other._name), _signed(other._signed), _execGrade(other._execGrade),
+	  _signGrade(other._signGrade) {
+}
+
 Form::Form(std::string _newName, int _newExGrade, int _newSiGrade)
 	: _name(_newName), _signed(false), _execGrade(_newExGrade),
 	  _signGrade(_newSiGrade) {
@@ -30,8 +35,9 @@ Form::Form(std::string _newName, int _newExGrade, int _newSiGrade)
 }
 
 Form &Form::operator=(const Form &other) {
-	if (this != &other)
-		*this = *&other;
+	if (this != &other) {
+		;
+	}
 	return *this;
 }
 

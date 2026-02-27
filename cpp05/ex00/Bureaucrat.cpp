@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/26 14:33:28 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/27 17:12:15 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ Bureaucrat::Bureaucrat(std::string _otherName, int _otherGrade)
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
-	if (this != &other)
-		*this = *&other;
+	if (this != &other) {
+		;
+	}
 	return *this;
 }
 
