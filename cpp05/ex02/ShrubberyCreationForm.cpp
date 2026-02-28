@@ -6,36 +6,59 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:30:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/27 19:36:08 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/28 01:00:05 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Aform("No name", 137, 145) {
+ShrubberyCreationForm::ShrubberyCreationForm() : Aform("No name", 137, 145)
+{
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
-	: Aform(other) {
+	: Aform(other)
+{
 }
 
 ShrubberyCreationForm &
-ShrubberyCreationForm ::operator=(const ShrubberyCreationForm &other) {
+ShrubberyCreationForm ::operator=(const ShrubberyCreationForm &other)
+{
 	Aform::operator=(other);
+	return *this;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
-	: Aform(target, 137, 145) {
+	: Aform(target, 137, 145)
+{
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) {
-	std::string name = this->getName().append("_shrubbery");
-	std::ofstream outfile(name);
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	if (!this->getSigned())
+	{
+		std::cerr << this->getName() << " is not signed !" << std::endl;
+		return;
+	}
 
-	for (int i = 0; i < 5; i++) {
+	if (executor.getGrade() > this->getExecGrade())
+	{
+		throw GradeTooLowException();
+	}
+	std::string name = this->getName() + "_shrubbery";
+	std::ofstream outfile(name.c_str());
+
+	if (!outfile)
+	{
+		std::cerr << " Can not open the file : " << name << std::endl;
+		return;
+	}
+	for (int i = 0; i < 5; i++)
+	{
 		outfile << "           &&& &&  & &&\n"
 				   "       && &\\/&\\|& ()|/ @, &&\n"
 				   "       &\\/(/&/&||/& /_/)_&/_&\n"

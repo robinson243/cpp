@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = BiroBiro
 
-SRC = Bureaucrat.cpp  main.cpp Form.cpp
+SRC = Aform.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Bureaucrat.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -19,6 +19,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *_shrubbery
 
 re: fclean all
 

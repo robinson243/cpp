@@ -6,60 +6,85 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:40:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/27 16:08:46 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/28 01:54:02 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <iostream>
+#include <fstream>
 
+int main()
+{
+    srand(time(NULL));
+    // std::cout << "=== SHRUBBERYCREATIONFORM TEST ===\n\n";
 
-int main() {
-    std::cout << "=== EX01 FORM TESTS ===\n\n";
-    
-    // Test 1: Constructeur Form
-    try {
-        Form f1("Taxe", 0, 25);   // signGrade invalide
-    } catch(std::exception &e) {
-        std::cout << "✓ Constructeur signGrade too high: " << e.what() << "\n";
+    // Bureaucrat gardener("Gardener", 130); // execGrade=137 → OK
+    // std::cout << "Gardener: " << gardener << "\n";
+
+    // // 1. Créer form
+    // ShrubberyCreationForm tree("jardin");
+    // std::cout << "Tree form: " << tree << "\n\n";
+
+    // // 2. Signe (grade 130 <= signGrade 145)
+    // tree.beSigned(gardener);
+    // std::cout << "Après signature: " << tree << "\n\n";
+
+    // // 3. Execute succès
+    // std::cout << "EXECUTE SUCCES:\n";
+    // tree.execute(gardener);
+    // std::cout << "✓ Fichier jardin_shrubbery créé !\n\n";
+
+    // // 4. Grade trop bas
+    // Bureaucrat noob("Noob", 140); // 140 > 137 → FAIL
+    // std::cout << "Noob grade: " << noob.getGrade() << "\n";
+    // try
+    // {
+    //     tree.execute(noob);
+    // }
+    // catch (std::exception &e)
+    // {
+    //     std::cout << "✓ Noob refusé: " << e.what() << "\n";
+    // }
+
+    // // 5. Vérif fichier
+    // std::ifstream file("jardin_shrubbery");
+    // std::cout << "✓ Fichier existe: " << (file.good() ? "OUI" : "NON") << "\n";
+
+    Bureaucrat boss("Boss", 1);
+    Bureaucrat gardener("Gardener", 130);
+
+    RobotomyRequestForm robot("Target42");
+
+    std::cout << "=== ROBOTOMY TEST ===\n";
+    std::cout << boss << robot << "\n";
+
+    // 1. Sign
+    robot.beSigned(boss);
+    std::cout << "\nAprès signature: " << robot << "\n";
+
+    // 2. Execute Boss (grade 1 < 45)
+    try
+    {
+        robot.execute(boss);
+        std::cout << "✓ Boss execute OK\n";
     }
-    
-    try {
-        Form f2("Secret", 151, 25);  // signGrade invalide
-    } catch(std::exception &e) {
-        std::cout << "✓ Constructeur signGrade too low: " << e.what() << "\n";
+    catch (std::exception &e)
+    {
+        std::cout << "✗ Boss erreur: " << e.what() << "\n";
     }
-    
-    Form f_ok("OK", 75, 50);
-    std::cout << "✓ Form OK: " << f_ok << "\n";
-    
-    // Test 2: beSigned() - grades valides
-    Bureaucrat boss("Boss", 5);
-    Bureaucrat chef("Chef", 70);
-    
-    std::cout << "\n=== beSigned TESTS ===\n";
-    std::cout << "Boss grade: " << boss.getGrade() << "\n";
-    std::cout << "Form signGrade: " << f_ok.getSignGrade() << "\n";
-    
-    f_ok.beSigned(boss);  // 5 <= 75 → OK
-    std::cout << "✓ Boss signe OK\n";
-    
-    try {
-        Form f("Test", 75, 50);
-        std::cout << "Form OK !" << std::endl;
-    } catch(std::exception &e) {
-        std::cout << "ERREUR constructeur: " << e.what() << std::endl;
+
+    // 3. Gardener échoue (130 > 45)
+    try
+    {
+        robot.execute(gardener);
     }
-    std::cout << "Form signed: " << (f_ok.getSigned() ? "true" : "false") << "\n";
-    
-    // Test 3: Grade trop bas
-    Bureaucrat noob("Noob", 90);
-    try {
-        f_ok.beSigned(noob);  // 90 > 75 → EXCEPTION !
-        std::cout << "ERREUR: pas d'exception\n";
-    } catch(std::exception &e) {
-        std::cout << "✓ Noob refusé: " << e.what() << "\n";
+    catch (std::exception &e)
+    {
+        std::cout << "✓ Gardener refusé: " << e.what() << "\n";
     }
-    
+
     return 0;
 }
