@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:59:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 15:38:52 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/28 16:22:36 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ Aform *Intern::makeForm(const std::string &form, const std::string &target) {
 			break;
 		i++;
 	}
-    // std::cout << "je suis la " << stringForm[0] << std::endl;
+	Aform *f = NULL;
 	switch (i) {
 	case 0: {
-		std::cout << "Intern creates " << form << std::endl;
-		return new PresidentialPardonForm(target);
+		f = new PresidentialPardonForm(target);
+		break;
 	}
 	case 1: {
-		std::cout << "Intern creates " << form << std::endl;
-		return new RobotomyRequestForm(target);
+		f = new RobotomyRequestForm(target);
+		break;
 	}
 	case 2: {
-		std::cout << "Intern creates " << form << std::endl;
-		return new ShrubberyCreationForm(target);
+		f = new ShrubberyCreationForm(target);
+		break;
 	}
 
 	default: {
@@ -61,5 +61,8 @@ Aform *Intern::makeForm(const std::string &form, const std::string &target) {
 		break;
 	}
 	}
-	return NULL;
+	if (!f)
+		return NULL;
+	std::cout << "Intern creates " << form << std::endl;
+	return f;
 }
