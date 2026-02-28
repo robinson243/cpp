@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 10:45:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 00:47:39 by romukena         ###   ########.fr       */
+/*   Updated: 2026/02/28 14:29:29 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class Bureaucrat {
 	void decrementGrade();
 	void signForm(Aform &object);
 	friend std::ostream &operator<<(std::ostream &os, Bureaucrat &object);
+	void executeForm(Aform const &form);
 	class GradeTooHighException : public std::exception {
 	  public:
 		virtual const char *what() const throw() {

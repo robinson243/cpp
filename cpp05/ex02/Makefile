@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 NAME = BiroBiro
 
-SRC = Aform.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Bureaucrat.cpp main.cpp
+SRC = Aform.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Bureaucrat.cpp main.cpp \
+PresidentialPardonForm.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
