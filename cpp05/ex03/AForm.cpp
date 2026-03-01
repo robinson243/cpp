@@ -6,30 +6,30 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 16:51:27 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 15:30:28 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Aform.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Aform::Aform()
+AForm::AForm()
 	: _name("No name"), _signed(false), _execGrade(150), _signGrade(150)
 {
 }
 
-Aform::~Aform()
+AForm::~AForm()
 {
 	delete this;
 }
 
-Aform::Aform(const Aform &other)
+AForm::AForm(const AForm &other)
 	: _name(other._name), _signed(other._signed), _execGrade(other._execGrade),
 	  _signGrade(other._signGrade)
 {
 }
 
-Aform::Aform(std::string _newName, int _newExGrade, int _newSiGrade)
+AForm::AForm(std::string _newName, int _newExGrade, int _newSiGrade)
 	: _name(_newName), _signed(false), _execGrade(_newExGrade),
 	  _signGrade(_newSiGrade)
 {
@@ -39,7 +39,7 @@ Aform::Aform(std::string _newName, int _newExGrade, int _newSiGrade)
 		throw GradeTooLowException();
 }
 
-Aform &Aform::operator=(const Aform &other)
+AForm &AForm::operator=(const AForm &other)
 {
 	if (this != &other)
 	{
@@ -48,31 +48,31 @@ Aform &Aform::operator=(const Aform &other)
 	return *this;
 }
 
-std::string Aform::getName() const
+std::string AForm::getName() const
 {
 	return this->_name;
 }
 
-bool Aform::getSigned() const
+bool AForm::getSigned() const
 {
 	return this->_signed;
 }
 
-int Aform::getExecGrade() const
+int AForm::getExecGrade() const
 {
 	return this->_execGrade;
 }
 
-int Aform::getSignGrade() const
+int AForm::getSignGrade() const
 {
 	return this->_signGrade;
 }
 
-std::ostream &operator<<(std::ostream &os, Aform &object)
+std::ostream &operator<<(std::ostream &os, AForm &object)
 {
 	if (!object.getName().empty())
 	{
-		os << "Aform " << object.getName()
+		os << "AForm " << object.getName()
 		   << " is signed : " << object.getSigned()
 		   << " execGrade : " << object.getExecGrade()
 		   << " and signGrade : " << object.getSignGrade();
@@ -80,7 +80,7 @@ std::ostream &operator<<(std::ostream &os, Aform &object)
 	return os;
 }
 
-void Aform::beSigned(Bureaucrat &object)
+void AForm::beSigned(Bureaucrat &object)
 {
 	if (!object.getName().empty())
 	{

@@ -6,14 +6,14 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:15:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 11:27:19 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm() : Aform("No name", 45, 72)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("No name", 45, 72)
 {
 }
 
@@ -22,18 +22,18 @@ RobotomyRequestForm::~RobotomyRequestForm()
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
-	: Aform(other)
+	: AForm(other)
 {
 }
 
 RobotomyRequestForm &
 RobotomyRequestForm ::operator=(const RobotomyRequestForm &other)
 {
-	Aform::operator=(other);
+	AForm::operator=(other);
 	return *this;
 }
 RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
-	: Aform(target, 45, 72)
+	: AForm(target, 45, 72)
 {
 }
 

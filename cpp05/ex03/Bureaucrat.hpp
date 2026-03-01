@@ -6,14 +6,14 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 10:45:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 14:29:29 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Aform.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 class Bureaucrat {
@@ -31,9 +31,9 @@ class Bureaucrat {
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Aform &object);
+	void signForm(AForm &object);
 	friend std::ostream &operator<<(std::ostream &os, Bureaucrat &object);
-	void executeForm(Aform const &form);
+	void executeForm(AForm const &form);
 	class GradeTooHighException : public std::exception {
 	  public:
 		virtual const char *what() const throw() {

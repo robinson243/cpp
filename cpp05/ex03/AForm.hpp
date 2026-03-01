@@ -6,16 +6,16 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 16:14:32 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 15:30:48 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:31 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef AForm_HPP
+#define AForm_HPP
 class Bureaucrat;
 #include <iostream>
 
-class Aform
+class AForm
 {
 private:
 	const std::string _name;
@@ -24,16 +24,16 @@ private:
 	const int _signGrade;
 
 public:
-	Aform();
-	virtual ~Aform();
-	Aform(const Aform &other);
-	Aform &operator=(const Aform &other);
-	Aform(std::string _newName, int _newExGrade, int _newSiGrade);
+	AForm();
+	virtual ~AForm();
+	AForm(const AForm &other);
+	AForm &operator=(const AForm &other);
+	AForm(std::string _newName, int _newExGrade, int _newSiGrade);
 	std::string getName() const;
 	bool getSigned() const;
 	int getExecGrade() const;
 	int getSignGrade() const;
-	friend std::ostream &operator<<(std::ostream &os, Aform &object);
+	friend std::ostream &operator<<(std::ostream &os, AForm &object);
 	void beSigned(Bureaucrat &object);
 	class GradeTooHighException : public std::exception
 	{

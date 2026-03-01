@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:59:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 16:22:36 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Intern::~Intern() {
 // 	return *this;
 // }
 
-Aform *Intern::makeForm(const std::string &form, const std::string &target) {
+AForm *Intern::makeForm(const std::string &form, const std::string &target) {
 	std::string stringForm[3] = { "presidential pardon",
 								  "robotomy request",
 								  "shrubbery creation" };
@@ -41,7 +41,7 @@ Aform *Intern::makeForm(const std::string &form, const std::string &target) {
 			break;
 		i++;
 	}
-	Aform *f = NULL;
+	AForm *f = NULL;
 	switch (i) {
 	case 0: {
 		f = new PresidentialPardonForm(target);

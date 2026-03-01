@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 14:56:00 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 15:32:49 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define INTERN_HPP
 
 #include <iostream>
-#include "Aform.hpp"
+#include "AForm.hpp"
 
 class Intern
 {
@@ -23,7 +23,7 @@ public:
     ~Intern();
     // Intern(const Intern &other);
     // Intern &operator=(const Intern &other);
-    Aform* makeForm(const std::string &form, const std::string &target);
+    AForm* makeForm(const std::string &form, const std::string &target);
 };
 
 

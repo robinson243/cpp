@@ -6,18 +6,18 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:24:31 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 00:43:21 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
-#include "Aform.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-class ShrubberyCreationForm : public Aform
+class ShrubberyCreationForm : public AForm
 {
 public:
 	ShrubberyCreationForm();

@@ -6,13 +6,13 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 13:42:49 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 15:39:11 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Aform("No name", 5, 25) {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("No name", 5, 25) {
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
@@ -20,17 +20,17 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 
 PresidentialPardonForm::PresidentialPardonForm(
 	const PresidentialPardonForm &other)
-	: Aform(other) {
+	: AForm(other) {
 }
 
 PresidentialPardonForm &
 PresidentialPardonForm ::operator=(const PresidentialPardonForm &other) {
-	Aform::operator=(other);
+	AForm::operator=(other);
 	return *this;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
-	: Aform(target, 5, 25)  {
+	: AForm(target, 5, 25)  {
 }
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {

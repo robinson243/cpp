@@ -6,18 +6,18 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:11:27 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 01:41:56 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
-#include "Aform.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-class RobotomyRequestForm : public Aform
+class RobotomyRequestForm : public AForm
 {
 public:
 	RobotomyRequestForm();

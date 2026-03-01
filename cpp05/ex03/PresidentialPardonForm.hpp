@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 11:33:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 11:38:25 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
-#include "Aform.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class PresidentialPardonForm : public Aform {
+class PresidentialPardonForm : public AForm {
   public:
 	PresidentialPardonForm();
 	~PresidentialPardonForm();
