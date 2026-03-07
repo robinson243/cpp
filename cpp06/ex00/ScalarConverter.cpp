@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/07 16:14:01 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:29:49 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ bool ScalarConverter::isFloat() {
 			isF++;
 		i++;
 	}
-	if (!this->_lit[i] == '\0' || isPoint > 1 || isPoint == 0 || isF > 1
-		|| isF == 0)
+	if (this->_lit[i] != '\0' || isPoint > 1 || isF > 1 || isF == 0)
 		return false;
 	long double numb = strtod(this->_lit.c_str(), NULL);
 	if (numb < std::numeric_limits<float>::min()
@@ -192,10 +191,15 @@ double ScalarConverter::strToDouble() {
 void ScalarConverter::convert() {
 	std::cout << std::fixed << std::setprecision(1);
 
+	if (this->_lit.empty()) {
+		std::cout << "char: impossible\nint: impossible\nfloat: "
+					 "impossible\ndouble: impossible\n";
+		return;
+	}
 	if (this->_lit == "nan") {
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nan" << std::endl;
+		std::cout << "float: nanf" << std::endl;
 		std::cout << "double: nan" << std::endl;
 		return;
 	}
