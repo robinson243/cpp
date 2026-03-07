@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/07 16:29:49 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/07 16:47:17 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,17 @@ std::string ScalarConverter::getString() {
 
 bool ScalarConverter::isInt() {
 	int i = 0;
+	if (this->_lit[0] == '-' || this->_lit[0] == '+') {
+		i++;
+	}
 	while (this->_lit[i] >= '0' && this->_lit[i] <= '9') {
 		i++;
 	}
-	if (!this->_lit[i] == '\0')
-		return false;
 	long long numb = strtoll(this->_lit.c_str(), NULL, 10);
+	if (this->_lit[i] != '\0')
+		return false;
 	if (numb < -2147483648 || numb > 2147483647)
 		return false;
-
 	return true;
 }
 
@@ -65,16 +67,19 @@ bool ScalarConverter::isDouble() {
 	int isPoint = 0;
 	if (this->_lit[0] == '.')
 		return false;
+	if (this->_lit[0] == '-' || this->_lit[0] == '+') {
+		i++;
+	}
 	while ((this->_lit[i] >= '0' && this->_lit[i] <= '9')
 		   || this->_lit[i] == '.') {
 		if (this->_lit[i] == '.')
 			isPoint++;
 		i++;
 	}
-	if (!this->_lit[i] == '\0' || isPoint > 1 || isPoint == 0)
+	if (this->_lit[i] != '\0' || isPoint > 1 || isPoint == 0)
 		return false;
 	long double numb = strtod(this->_lit.c_str(), NULL);
-	if (numb < std::numeric_limits<double>::min()
+	if (numb < -std::numeric_limits<double>::max()
 		|| numb > std::numeric_limits<double>::max())
 		return false;
 	if (this->_lit[i - 1] == '.')
@@ -86,6 +91,9 @@ bool ScalarConverter::isFloat() {
 	int i = 0;
 	int isPoint = 0;
 	int isF = 0;
+	if (this->_lit[0] == '-' || this->_lit[0] == '+') {
+		i++;
+	}
 	if (this->_lit[0] == '.')
 		return false;
 	while ((this->_lit[i] >= '0' && this->_lit[i] <= '9')
@@ -99,7 +107,7 @@ bool ScalarConverter::isFloat() {
 	if (this->_lit[i] != '\0' || isPoint > 1 || isF > 1 || isF == 0)
 		return false;
 	long double numb = strtod(this->_lit.c_str(), NULL);
-	if (numb < std::numeric_limits<float>::min()
+	if (numb < -std::numeric_limits<float>::max()
 		|| numb > std::numeric_limits<float>::max())
 		return false;
 	if ((this->_lit[i - 1] == '.') || this->_lit[i - 1] != 'f')
