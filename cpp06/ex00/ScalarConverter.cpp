@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/08 10:57:06 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/08 11:10:21 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,40 +227,27 @@ void ScalarConverter::convert()
 
 	if (this->_lit.empty())
 	{
-		std::cout << "char: impossible\nint: impossible\nfloat: "
-					 "impossible\ndouble: impossible\n";
+		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble : impossible"
+				  << std::endl;
+		;
 		return;
 	}
-	if (this->_lit == "nan")
+	if (this->_lit == "nanf" || this->_lit == "nan")
 	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
-		return;
-	}
-	if (this->_lit == "nanf")
-	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
+		std::cout << "char: impossible\nint: impossible\nfloat: nanf\ndouble : nan"
+				  << std::endl;
 		return;
 	}
 	if (this->_lit == "+inf" || this->_lit == "inf" || this->_lit == "+inff")
 	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: +inff" << std::endl;
-		std::cout << "double: +inf" << std::endl;
+		std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble : +inf"
+				  << std::endl;
 		return;
 	}
 	if (this->_lit == "-inf" || this->_lit == "-inff")
 	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: -inff" << std::endl;
-		std::cout << "double: -inf" << std::endl;
+		std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble : -inf"
+				  << std::endl;
 		return;
 	}
 	if (this->_lit.length() == 1 && !isdigit(this->_lit[0]))
@@ -294,10 +281,7 @@ void ScalarConverter::convert()
 		std::cout << "double: " << this->floatToDouble() << std::endl;
 	}
 	else
-	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
-		std::cout << "float: impossible" << std::endl;
-		std::cout << "double: impossible" << std::endl;
-	}
+
+		std::cout << "char: impossible\nint: impossible\nfloat: "
+					 "impossible\ndouble: impossible\n";
 }
