@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 17:51:03 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 15:41:31 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/10 15:53:46 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,14 @@ void identify(Base *p) {
 	else if (dynamic_cast<B *>(p))
 		std::cout << "L'objet est B" << std::endl;
 	else if (dynamic_cast<C *>(p))
+		std::cout << "L'objet est C" << std::endl;
+}
+
+void identify(Base &p) {
+	if (dynamic_cast<A *>(&p))
+		std::cout << "L'objet est A" << std::endl;
+	else if (dynamic_cast<B *>(&p))
+		std::cout << "L'objet est B" << std::endl;
+	else if (dynamic_cast<C *>(&p))
 		std::cout << "L'objet est C" << std::endl;
 }
