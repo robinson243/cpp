@@ -11,20 +11,20 @@
 /* ************************************************************************** */
 
 #include "Base.hpp"
+
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
 
-Base *generate(void)
-{
-	int randomNum = rand() % 3;
+Base *generate(void) {
+    int randomNum = rand() % 3;
 
-	switch(rand) {
-  		case 0:
-			return *A;
-		case 1:
-			return *B;
-		case 2:
-			return *C;
-}
+    switch (rand) {
+	case 0:
+	    return *A;
+	case 1:
+	    return *B;
+	case 2:
+	    return *C;
+    }
 }

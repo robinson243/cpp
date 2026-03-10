@@ -16,6 +16,7 @@
 #include <cstdlib>
 #include <iostream> 
 
+// alias formatcpp='clang-format -i -style="{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 80, UseTab: Always}" "$1"'
 class Base
 {
 public:
