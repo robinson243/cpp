@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 16:53:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/09 17:20:49 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/10 13:56:04 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 #include "Base.hpp"
 
-class C : public Base
-{
-    
-};
-
+class C : public Base {};
 
 #endif

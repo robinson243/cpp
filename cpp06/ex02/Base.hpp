@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/09 14:32:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/09 17:57:07 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/10 15:14:22 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #define BASE_HPP
 
 #include <cstdlib>
-#include <iostream> 
+#include <stdio.h>
+#include <iostream>
 
-// alias formatcpp='clang-format -i -style="{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 80, UseTab: Always}" "$1"'
-class Base
-{
-public:
-    virtual ~Base();
+class Base {
+  public:
+	virtual ~Base();
 };
 
 Base *generate(void);
-void identify(Base* p);
-void identify(Base& p);
+void identify(Base *p);
+void identify(Base &p);
 
 #endif

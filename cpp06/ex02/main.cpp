@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/09 17:51:03 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 15:41:31 by romukena         ###   ########.fr       */
+/*   Created: 2026/03/10 14:01:58 by romukena          #+#    #+#             */
+/*   Updated: 2026/03/10 15:42:06 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,22 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
-#include <stdio.h>
+#include <ctime>
 
-Base::~Base() {
-}
+// Prototype de la fonction generate
+Base *generate(void);
 
-Base *generate(void) {
-	switch (rand() % 3) {
-	case 0:
-		return new A();
-	case 1:
-		return new B();
-	case 2:
-		return new C();
-	}
-	return NULL;
-}
+int main() {
+	std::srand(std::time(NULL)); // initialisation du rand
+	Base *obj = generate();			// appeler la fonction
 
-void identify(Base *p) {
-	if (dynamic_cast<A *>(p))
-		std::cout << "L'objet est A" << std::endl;
-	else if (dynamic_cast<B *>(p))
-		std::cout << "L'objet est B" << std::endl;
-	else if (dynamic_cast<C *>(p))
-		std::cout << "L'objet est C" << std::endl;
+	// if (obj) {
+	// 	std::cout << "Objet généré avec succès !" << std::endl;
+	// 	delete obj; // libération de la mémoire
+	// } else {
+	// 	std::cout << "Échec de génération de l'objet." << std::endl;
+	// }
+
+	identify(obj);
+	return 0;
 }
