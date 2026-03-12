@@ -6,12 +6,12 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:32 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/07 15:32:24 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 00:43:34 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATICCONVERTER_HPP
-#define STATICCONVERTER_HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 #include <cmath>
 #include <cstdlib>
 #include <iomanip>

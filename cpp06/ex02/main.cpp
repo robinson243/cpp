@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 14:01:58 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 16:55:28 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 00:46:06 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 #include "C.hpp"
 #include <ctime>
 
-int main() {
+int main()
+{
 	std::srand(std::time(NULL));
 	Base *obj = generate();
 	identify(obj);
 	identify(*obj);
+	delete obj;
 	return 0;
 }

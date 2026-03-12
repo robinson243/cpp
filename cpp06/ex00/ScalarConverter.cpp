@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:30 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/08 11:10:21 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 00:44:29 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ ScalarConverter::ScalarConverter(std::string s)
 	while (s[i])
 	{
 		while (isspace(s[i]))
-			s[i++];
+			i++;
 		if (!isspace(s[i]))
 			j = i;
 		while (s[i])
-			s[i++];
+			i++;
 	}
 	this->_lit = s.substr(j, i - j);
 }
