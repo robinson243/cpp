@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:40:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/01 19:10:53 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:22:11 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main()
 	{
 		form->beSigned(bob);
 		bob.executeForm(*form);
+		delete form;
 	}
 
 	form = intern.makeForm("robotomy request", "home2");
@@ -38,6 +39,7 @@ int main()
 	{
 		form->beSigned(bob);
 		bob.executeForm(*form);
+		delete form;
 	}
 
 	form = intern.makeForm("presidential pardon", "home3");
@@ -45,6 +47,7 @@ int main()
 	{
 		form->beSigned(bob);
 		bob.executeForm(*form);
+		delete form;
 	}
 	// Test unknown
 	form = intern.makeForm("unknown form", "test");

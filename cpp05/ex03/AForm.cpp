@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 16:51:27 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/01 19:10:32 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:08:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ AForm::AForm(std::string _newName, int _newExGrade, int _newSiGrade)
 AForm &AForm::operator=(const AForm &other)
 {
 	if (this != &other)
-	{
-		;
-	}
+		_signed = other._signed;
 	return *this;
 }
 
@@ -81,13 +79,11 @@ std::ostream &operator<<(std::ostream &os, AForm &object)
 
 void AForm::beSigned(Bureaucrat &object)
 {
-	if (!object.getName().empty())
+
+	if (object.getGrade() <= this->getSignGrade())
 	{
-		if (object.getGrade() <= this->getSignGrade())
-		{
-			this->_signed = true;
-		}
-		else
-			throw GradeTooLowException();
+		this->_signed = true;
 	}
+	else
+		throw GradeTooLowException();
 }

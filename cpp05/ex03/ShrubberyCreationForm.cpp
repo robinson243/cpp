@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 17:30:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:26:15 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	if (!this->getSigned())
 	{
-		std::cerr << this->getName() << " is not signed !" << std::endl;
-		return;
+		throw GradeTooLowException();
 	}
-
 	if (executor.getGrade() > this->getExecGrade())
 	{
 		throw GradeTooLowException();
@@ -54,7 +52,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 
 	if (!outfile)
 	{
-		std::cerr << " Can not open the file : " << name << std::endl;
 		return;
 	}
 	for (int i = 0; i < 5; i++)

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:15:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/01 10:34:07 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:25:54 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	int randomNum = rand() % 2;
 	if (!this->getSigned())
 	{
-		std::cerr << this->getName() << " is not signed !" << std::endl;
-		return;
+		throw GradeTooLowException();
 	}
 
 	if (executor.getGrade() > this->getExecGrade())
@@ -55,9 +54,5 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	if (randomNum == 1)
 	{
 		std::cout << this->getName() << " has been robotomized" << std::endl;
-	}
-	else
-	{
-		std::cerr << this->getName() << " failed to be robotomized" << std::endl;
 	}
 }
