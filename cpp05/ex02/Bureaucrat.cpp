@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/28 14:41:56 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:18:15 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Bureaucrat::Bureaucrat(std::string _otherName, int _otherGrade)
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	if (this != &other) {
-		;
+		this->_grade = other._grade;
 	}
 	return *this;
 }
@@ -62,25 +62,23 @@ void Bureaucrat::decrementGrade() {
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &object) {
-	os << object.getName() << ", bureaucrat grade " << object.getGrade();
+	os << object.getName() << ", bureaucrat grade " << object.getGrade() << ".";
 	return os;
 }
 
-void Bureaucrat::signForm(Aform &object) {
-	if (!object.getName().empty()) {
-		try {
-			if (this->getGrade() <= object.getSignGrade()) {
-				object.beSigned(*this);
-			}
-			std::cout << this->getName() << " signed " << object.getName();
-		} catch (const std::exception &e) {
-			std::cerr << this->getName() << " couldn’t sign "
-					  << object.getName() << " because " << e.what() << '\n';
+void Bureaucrat::signForm(AForm &object) {
+	try {
+		if (this->getGrade() <= object.getSignGrade()) {
+			object.beSigned(*this);
 		}
+		std::cout << this->getName() << " signed " << object.getName();
+	} catch (const std::exception &e) {
+		std::cerr << this->getName() << " couldn’t sign " << object.getName()
+				  << " because " << e.what() << '\n';
 	}
 }
 
-void Bureaucrat::executeForm(Aform const &form) {
+void Bureaucrat::executeForm(AForm const &form) {
 	try {
 		std::cout << this->getName() << " executed " << form.getName()
 				  << std::endl;
