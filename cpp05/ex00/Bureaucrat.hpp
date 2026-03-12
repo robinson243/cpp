@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 10:45:02 by romukena          #+#    #+#             */
-/*   Updated: 2026/02/25 14:05:31 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 03:27:14 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,38 @@
 
 #include <iostream>
 
-class Bureaucrat {
-  private:
+class Bureaucrat
+{
+private:
 	const std::string _name;
 	int _grade;
 
-  public:
+public:
 	Bureaucrat();
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &other);
 	Bureaucrat &operator=(const Bureaucrat &other);
 	Bureaucrat(std::string _otherName, int _otherGrade);
-	std::string getName();
-	int getGrade();
+	std::string getName() const;
+	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	friend std::ostream &operator<<(std::ostream &os, Bureaucrat &object);
+	friend std::ostream &operator<<(std::ostream &os, const Bureaucrat &object);
 
-	class GradeTooHighException : public std::exception {
-	  public:
-		virtual const char *what() const throw() {
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
 			return "grade too high";
 		}
 	};
 
-	class GradeTooLowException : public std::exception {
-	  public:
-		virtual const char *what() const throw() {
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
 			return "grade too low";
 		}
 	};
