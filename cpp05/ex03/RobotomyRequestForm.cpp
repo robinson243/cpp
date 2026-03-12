@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:15:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 17:15:50 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:21:06 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,10 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	if (randomNum == 1)
 	{
 		std::cout << this->getName() << " has been robotomized" << std::endl;
+	}
+	else
+	{
+		std::cerr << this->getName() << " failed to be robotomized"
+				  << std::endl;
 	}
 }
