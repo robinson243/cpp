@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:40:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 17:11:04 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:24:10 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int main()
 {
+	srand(time(NULL));
 	Intern intern;
 	Bureaucrat bob("Bob", 1);
 
