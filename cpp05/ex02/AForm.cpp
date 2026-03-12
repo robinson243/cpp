@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 16:51:27 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 15:18:15 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:21:27 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ AForm::AForm(std::string _newName, int _newExGrade, int _newSiGrade)
 
 AForm &AForm::operator=(const AForm &other) {
 	if (this != &other) {
-		;
+		_signed = other._signed;
 	}
 	return *this;
 }

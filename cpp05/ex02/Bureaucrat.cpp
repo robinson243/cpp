@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 15:18:15 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:23:57 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	return *this;
 }
 
-std::string Bureaucrat::getName() {
+std::string Bureaucrat::getName() const {
 	return (this->_name);
 }
 
@@ -61,16 +61,14 @@ void Bureaucrat::decrementGrade() {
 		this->_grade++;
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat &object) {
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &object) {
 	os << object.getName() << ", bureaucrat grade " << object.getGrade() << ".";
 	return os;
 }
 
 void Bureaucrat::signForm(AForm &object) {
 	try {
-		if (this->getGrade() <= object.getSignGrade()) {
-			object.beSigned(*this);
-		}
+		object.beSigned(*this);
 		std::cout << this->getName() << " signed " << object.getName();
 	} catch (const std::exception &e) {
 		std::cerr << this->getName() << " couldn’t sign " << object.getName()
@@ -80,9 +78,9 @@ void Bureaucrat::signForm(AForm &object) {
 
 void Bureaucrat::executeForm(AForm const &form) {
 	try {
+		form.execute(*this);
 		std::cout << this->getName() << " executed " << form.getName()
 				  << std::endl;
-		form.execute(*this);
 	} catch (const std::exception &e) {
 		std::cout << this->getName() << " cannot execute " << form.getName()
 				  << ": " << e.what() << std::endl;

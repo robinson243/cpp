@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 13:42:49 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 15:18:15 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:24:41 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	if (!this->getSigned()) {
 		std::cerr << this->getName() << " is not signed !" << std::endl;
-		return;
+		throw GradeTooLowException();
 	}
 
 	if (executor.getGrade() > this->getExecGrade()) {
