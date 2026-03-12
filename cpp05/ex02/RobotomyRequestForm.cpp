@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:15:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 17:10:23 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:15:42 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	srand(time(NULL));
 	int randomNum = rand() % 2;
 	if (!this->getSigned())
 	{

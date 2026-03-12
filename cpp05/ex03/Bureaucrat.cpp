@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 17:12:45 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:16:43 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void Bureaucrat::decrementGrade()
 		this->_grade++;
 }
 
-std::ostream &operator<<(std::ostream &os, Bureaucrat &object)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &object)
 {
 	os << object.getName() << ", bureaucrat grade " << object.getGrade() << ".";
 	return os;
