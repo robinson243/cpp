@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 15:23:57 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:26:46 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &object) {
 void Bureaucrat::signForm(AForm &object) {
 	try {
 		object.beSigned(*this);
-		std::cout << this->getName() << " signed " << object.getName();
+		std::cout << this->getName() << " signed " << object.getName()
+				  << std::endl;
 	} catch (const std::exception &e) {
 		std::cerr << this->getName() << " couldn’t sign " << object.getName()
 				  << " because " << e.what() << '\n';
