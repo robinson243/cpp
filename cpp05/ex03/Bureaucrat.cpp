@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 11:11:55 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 16:23:58 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:12:45 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 	return *this;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
 	return (this->_name);
 }
@@ -95,9 +95,9 @@ void Bureaucrat::executeForm(AForm const &form)
 {
 	try
 	{
+		form.execute(*this);
 		std::cout << this->getName() << " executed " << form.getName()
 				  << std::endl;
-		form.execute(*this);
 	}
 	catch (const std::exception &e)
 	{

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:40:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 16:05:19 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:09:58 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include <cstdlib>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 

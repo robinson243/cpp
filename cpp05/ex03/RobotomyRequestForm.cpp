@@ -6,12 +6,13 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/28 01:15:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 16:25:54 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:10:36 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("No name", 45, 72)
 {
