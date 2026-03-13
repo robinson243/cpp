@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 15:55:32 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/13 00:43:34 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 01:00:28 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <limits>
 #include <stdint.h>
 #include <string>
+#include <cctype>
 
 class ScalarConverter {
   private:
