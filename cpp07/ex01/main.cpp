@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:48:05 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 18:36:57 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:16:34 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int main(void) {
 	for (int i = 0; i < size; i++) {
 		std::cout << tab[i] << std::endl;
 	}
+	return 0;
 }

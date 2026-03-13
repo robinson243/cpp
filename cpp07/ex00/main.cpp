@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:25:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 17:35:11 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:16:20 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ int main(void) {
 	int a = 25;
 	int b = 55;
 	std::cout << max(a, b) << std::endl;
+	return 0;
 }

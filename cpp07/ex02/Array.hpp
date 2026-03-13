@@ -6,14 +6,14 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/12 02:10:00 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:18:00 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_TPP
-#define ARRAY_TPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 #include <iostream>
-#include "limits"
+#include <limits>
 #include <stdexcept>
 
 template <typename T>
