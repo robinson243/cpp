@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 13:08:50 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/18 00:22:41 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/18 15:14:53 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 #include "limits.h"
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 #include <vector>
 
-class Span
-{
-private:
+class Span {
+  private:
 	std::vector<int> _number;
 
-public:
+  public:
 	Span();
 	Span &operator=(const Span &other);
 	~Span();
@@ -32,7 +32,7 @@ public:
 	int shortestSpan();
 	int longestSpan();
 	void addNumber(unsigned int n);
-	friend std::ostream &operator<<(std::ostream &os, Span &other);
+	std::vector<int> getNum();
 };
 
 #endif
