@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 16:36:20 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/18 18:05:17 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/18 18:25:56 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,19 @@
 #include <iostream>
 #include <stack>
 
-template <typename T>
-class MutantStack {
-  private:
-	std::stack<T> c;
-
+template <typename T> class MutantStack : public std::stack<T> {
   public:
+	using iterator = std::deque<T>::iterator;
 	MutantStack();
 	~MutantStack();
 	MutantStack(const MutantStack &other);
 	MutantStack &operator=(const MutantStack &other);
-	void push(int N);
-	void pop();
-	int top();
-	int begin();
-	int end();
-	size_t size();
+	// void push(T other);
+	// void pop();
+	// T top();
+	// size_t size();
+	MutantStack<T>::iterator begin(); /*doit retourner un iterateur*/
+	MutantStack<T>::iterator end();	  /*doit retourner un iterateur*/
 };
 
 #endif
