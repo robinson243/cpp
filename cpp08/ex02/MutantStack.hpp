@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 16:36:20 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/18 18:28:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/18 18:29:29 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ template <typename T> class MutantStack : public std::stack<T> {
 	// void pop();
 	// T top();
 	// size_t size();
-	MutantStack<T>::iterator begin(); /*doit retourner un iterateur*/
-	MutantStack<T>::iterator end();	  /*doit retourner un iterateur*/
+	iterator begin();
+	iterator end();
 };
 
 #endif
