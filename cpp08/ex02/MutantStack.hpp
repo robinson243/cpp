@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/18 16:36:20 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/18 18:34:58 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:35:23 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,14 @@
 
 template <typename T> class MutantStack : public std::stack<T> {
   public:
-	using iterator = typename std::deque<T>::iterator;
+	typedef typename std::deque<T>::iterator iterator;
 	MutantStack();
 	~MutantStack();
-	MutantStack(const MutantStack &other);
-	MutantStack &operator=(const MutantStack &other);
-	// void push(T other);
-	// void pop();
-	// T top();
-	// size_t size();
+	MutantStack(const MutantStack<T> &other);
+	MutantStack &operator=(const MutantStack<T> &other);
 	iterator begin();
 	iterator end();
 };
 
+#include "MutantStack.tpp"
 #endif
