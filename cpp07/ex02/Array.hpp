@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/13 23:18:00 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 11:37:13 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,8 @@ private:
 	unsigned int _size;
 
 public:
-	Array()
-	{
-		_size = 0;
-		_value = new T[_size];
-	};
+	Array() : _size(0), _value(nullptr) {
+			  };
 	~Array() { delete[] _value; };
 	Array(unsigned int n)
 	{
@@ -62,13 +59,12 @@ public:
 			return "Invalid index : out of range";
 		}
 	};
-	T &operator[](unsigned int index) const
+	T &operator[](unsigned int index)
 	{
 		if (index >= this->size())
 		{
 			throw OutOfRange();
 		}
-
 		return this->_value[index];
 	};
 	unsigned int size() const
@@ -76,5 +72,7 @@ public:
 		return _size;
 	};
 };
+
+#include "Array.tpp"
 
 #endif
