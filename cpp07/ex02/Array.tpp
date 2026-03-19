@@ -6,15 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 11:26:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/19 11:28:10 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 11:39:39 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
-
-template <typename T>
-Array::Array()
-{
-	_size = 0;
-	_value = new T[_size];
-};

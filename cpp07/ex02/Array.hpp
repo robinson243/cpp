@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/19 11:37:13 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 11:42:18 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 	unsigned int _size;
 
 public:
-	Array() : _size(0), _value(nullptr) {
+	Array() : _value(NULL), _size(0) {
 			  };
 	~Array() { delete[] _value; };
 	Array(unsigned int n)
@@ -32,7 +32,7 @@ public:
 		_size = n;
 		_value = new T[n];
 	};
-	Array(const Array &other)
+	Array(Array &other)
 	{
 		_size = other.size();
 		_value = new T[_size];
