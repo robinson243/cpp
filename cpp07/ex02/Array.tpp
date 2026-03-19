@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 11:26:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/19 13:32:10 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:52:08 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ template <typename T> Array<T>::Array(const Array &other) {
 		_value[i] = other[i];
 };
 
-template <typename T>
-Array<T> &Array<T>:: operator=(const Array<T> &other) {
+template <typename T> Array<T> &Array<T>::operator=(const Array<T> &other) {
 	if (this != &other) {
 		delete[] _value;
 		_size = other.size();
@@ -42,18 +41,20 @@ Array<T> &Array<T>:: operator=(const Array<T> &other) {
 	return *this;
 };
 
-// template <typename T>
+class OutOfRange : public std::exception {
+  public:
+	virtual const char *what() const throw() {
+		return "Invalid index : out of range";
+	}
+};
 
-// template <typename T>
+template <typename T> T &Array<T>::operator[](unsigned int index) const {
+	if (index >= this->size())
+		throw OutOfRange();
+	return _value[index];
+};
 
-// template <typename T>
+template <typename T> unsigned int Array<T>::size() const {
+	return _size;
+};
 
-// template <typename T>
-
-// template <typename T>
-
-// template <typename T>
-
-// template <typename T>
-
-// template <typename T>

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/19 13:32:30 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/19 13:52:48 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,9 @@ template <typename T> class Array {
 	Array(unsigned int n);
 	Array(const Array &other);
 	Array &operator=(const Array<T> &other);
-	class OutOfRange : public std::exception {
-	  public:
-		virtual const char *what() const throw() {
-			return "Invalid index : out of range";
-		}
-	};
-	T &operator[](unsigned int index) const {
-		if (index >= this->size())
-			throw OutOfRange();
-		return _value[index];
-	};
-	unsigned int size() const {
-		return _size;
-	};
+	class OutOfRange : public std::exception {};
+	T &operator[](unsigned int index) const;
+	unsigned int size() const;
 };
 
 #include "Array.tpp"
