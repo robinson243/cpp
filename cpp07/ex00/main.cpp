@@ -6,13 +6,14 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:25:09 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/17 12:39:59 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:11:34 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "min.hpp"
 #include "swap.hpp"
 #include "max.hpp"
+#include <string>
 
 int main(void)
 {
