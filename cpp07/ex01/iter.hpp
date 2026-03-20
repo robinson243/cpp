@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:36:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/14 00:33:24 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:00:40 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void iter(const T *tab, const int size, void (*f)(const T &))
 {
 	if (!tab || !f || size <= 0)
 		return;
-	for (std::size_t i = 0; i < size; ++i)
+	for (int i = 0; i < size; ++i)
 		f(tab[i]);
 }
 

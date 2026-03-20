@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:01:28 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/10 17:32:21 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:00:08 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define MIN_HPP
 #include <iostream>
 
-template <typename T> T min(T &a, T &b) {
+template <typename T> T& min(T &a, T &b) {
 	return (a < b ? a : b);
 }
 

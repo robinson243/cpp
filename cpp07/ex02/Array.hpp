@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/19 13:52:48 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:02:03 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,28 @@
 #include <limits>
 #include <stdexcept>
 
-template <typename T> class Array {
-  private:
+template <typename T>
+class Array
+{
+private:
 	T *_value;
 	unsigned int _size;
 
-  public:
+public:
 	Array();
 	~Array();
 	Array(unsigned int n);
 	Array(const Array &other);
 	Array &operator=(const Array<T> &other);
-	class OutOfRange : public std::exception {};
+	class OutOfRange : public std::exception
+	{
+	public:
+		virtual const char *what() const throw()
+		{
+			return "Invalid index : out of range";
+		}
+	};
+
 	T &operator[](unsigned int index) const;
 	unsigned int size() const;
 };
