@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 23:21:51 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/20 19:12:50 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:22:24 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ public:
 		virtual const char *what() const throw();
 	};
 
-	T &operator[](unsigned int index) const;
+	T &operator[](unsigned int index);
+	T const &operator[](unsigned int index) const;
 	unsigned int size() const;
 };
 

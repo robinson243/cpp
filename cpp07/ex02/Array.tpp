@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 11:26:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/20 19:13:07 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:23:49 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,15 @@ const char *Array<T>::OutOfRange::what() const throw()
 }
 
 template <typename T>
-T &Array<T>::operator[](unsigned int index) const
+T const &Array<T>::operator[](unsigned int index) const
+{
+	if (index >= this->size())
+		throw OutOfRange();
+	return _value[index];
+};
+
+template <typename T>
+T &Array<T>::operator[](unsigned int index)
 {
 	if (index >= this->size())
 		throw OutOfRange();

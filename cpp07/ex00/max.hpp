@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 17:00:38 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/20 19:10:25 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/20 19:19:33 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 template <typename T>
-const T &max(T &a, T &b)
+const T &max(const T &a, const T &b)
 {
 	return (a > b ? a : b);
 }
