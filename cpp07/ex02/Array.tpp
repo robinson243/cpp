@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 11:26:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/21 13:57:51 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/21 14:05:34 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,14 @@ template <typename T> Array<T>::Array(unsigned int n) : _value(NULL), _size(n) {
 
 template <typename T> Array<T>::Array(const Array &other) {
 	_size = other.size();
-	_value = new T[_size];
+	_value = new T[_size]();
 	for (unsigned int i = 0; i < other.size(); i++)
 		_value[i] = other[i];
 };
 
 template <typename T> Array<T> &Array<T>::operator=(const Array<T> &other) {
 	if (this != &other) {
-		Array tmp(other.size());
-		for (unsigned int i = 0; i < other.size(); i++)
-			tmp._value[i] = other[i];
+		Array tmp(other);
 		delete[] _value;
 		this->_value = tmp._value;
 		this->_size = tmp.size();
