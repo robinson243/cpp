@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/16 14:49:12 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/16 15:30:49 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/21 14:58:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(void)
 
 	try
 	{
-		std::vector<int>::iterator it = easyfind(vec, 4);
+		std::vector<int>::iterator it = easyfind(vec, 54);
 		std::cout << *it << std::endl;
 	}
 	catch (const std::invalid_argument &e)
