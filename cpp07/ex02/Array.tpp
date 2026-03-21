@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 11:26:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/21 13:03:53 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/21 13:57:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ template <typename T> Array<T>::Array(const Array &other) {
 
 template <typename T> Array<T> &Array<T>::operator=(const Array<T> &other) {
 	if (this != &other) {
-		delete[] _value;
-		_size = other.size();
-		_value = new T[_size];
+		Array tmp(other.size());
 		for (unsigned int i = 0; i < other.size(); i++)
-			_value[i] = other[i];
+			tmp._value[i] = other[i];
+		delete[] _value;
+		this->_value = tmp._value;
+		this->_size = tmp.size();
+		tmp._value = NULL;
 	}
 	return *this;
 };
