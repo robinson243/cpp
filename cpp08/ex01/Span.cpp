@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:49:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/18 16:25:03 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/21 15:54:56 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ Span::~Span() {};
 
 Span &Span::operator=(const Span &other) {
 	if (this != &other) {
+		_number.resize(other._number.size());
 		std::copy(
 			other._number.begin(), other._number.end(), this->_number.begin());
 	}
@@ -26,6 +27,7 @@ Span &Span::operator=(const Span &other) {
 
 Span::Span(const Span &other) {
 	if (this != &other) {
+		_number.resize(other._number.size());
 		std::copy(
 			other._number.begin(), other._number.end(), this->_number.begin());
 	}
@@ -37,30 +39,29 @@ Span::Span(unsigned int n) {
 
 int Span::shortestSpan() {
 	std::vector<int> v = this->getNum();
-	std::vector<int> diff(this->getNum().size());
 
 	sort(v.begin(), v.end());
-	int smallValue;
-	std::vector<int>::size_type i = 0;
-	std::vector<int>::size_type j = 1;
-	smallValue = v[j] - v[i];
-	for (std::vector<int>::size_type i = 0; i < diff.size(); i++) {
-		for (std::vector<int>::size_type j = i + 1; j < diff.size(); j++) {
-			if (smallValue > (v[j] - v[i])) {
-				smallValue = (v[j] - v[i]);
-			}
+	int smallValue = INT_MAX;
+	if (v.size() < 2)
+		throw std::underflow_error("Not enough elements");
+	for (std::vector<int>::size_type i = 1; i < v.size(); i++) {
+		if ((v[i] - v[i - 1]) < smallValue) {
+			smallValue = (v[i] - v[i - 1]);
 		}
 	}
 	return smallValue;
 }
+
 int Span::longestSpan() {
+	if (_number.size() < 2)
+		throw std::underflow_error("Not enough elements");
 	return (*max_element(this->_number.begin(), this->_number.end())
 			- *min_element(this->_number.begin(), this->_number.end()));
 }
 
 void Span::addNumber(unsigned int n) {
-	if (this->_number.size() >= INT_MAX)
-		return;
+	if (this->_number.size() >= this->_number.capacity())
+		throw std::length_error("Container is full !");
 	this->_number.push_back(n);
 }
 
