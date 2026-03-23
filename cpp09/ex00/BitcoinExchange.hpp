@@ -6,28 +6,27 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 22:50:48 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/22 22:59:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/23 17:22:56 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <algorithm>
-#include <vector>
+#include <fstream>
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <string>
 
-class BitcoinExchange
-{
-private:
-	std::vector<std::string> input_data;
-	std::vector<std::string> other_data;
-public:
-	BitcoinExchange(/* args */);
+class BitcoinExchange {
+  private:
+  public:
+	std::list<std::pair<std::string, std::string> > input_data;
+	std::list<std::pair<std::string, std::string> > other_data;
+	BitcoinExchange();
 	~BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange &other);
+	BitcoinExchange &operator=(const BitcoinExchange &other);
 };
 
-BitcoinExchange::BitcoinExchange(/* args */)
-{
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-}
+void data_add(std::string file, BitcoinExchange map);
+void input_add(std::string file, BitcoinExchange map);
