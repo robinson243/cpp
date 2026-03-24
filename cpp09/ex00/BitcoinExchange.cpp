@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 02:37:17 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 15:00:00 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,27 @@
 
 BitcoinExchange::BitcoinExchange() {};
 BitcoinExchange::~BitcoinExchange() {};
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
-{
-	if (this != &other)
-	{
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
+	if (this != &other) {
 		this->input_data = other.input_data;
 		this->other_data = other.other_data;
 	}
 }
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
-{
-	if (this != &other)
-	{
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
+	if (this != &other) {
 		this->input_data = other.input_data;
 		this->other_data = other.other_data;
 	}
 	return *this;
 }
 
-void data_add(std::string file, BitcoinExchange &map)
-{
+void data_add(std::string file, BitcoinExchange &map) {
 	std::ifstream myFile(file.c_str());
 	std::string line;
 	std::string content;
 	getline(myFile, line);
-	while (getline(myFile, line))
-	{
+	while (getline(myFile, line)) {
 		content += line;
 		content += '\n';
 		map.other_data.insert(std::pair<std::string, std::string>(
@@ -49,14 +43,12 @@ void data_add(std::string file, BitcoinExchange &map)
 	myFile.close();
 }
 
-void input_add(std::string file, BitcoinExchange &map)
-{
+void input_add(std::string file, BitcoinExchange &map) {
 	std::ifstream myFile(file.c_str());
 	std::string line;
 	std::string content;
 	getline(myFile, line);
-	while (getline(myFile, line))
-	{
+	while (getline(myFile, line)) {
 		content += line;
 		content += '\n';
 		std::string tmp;
@@ -76,14 +68,12 @@ void input_add(std::string file, BitcoinExchange &map)
 	myFile.close();
 }
 
-void validate_value(BitcoinExchange &map)
-{
+void validate_value(BitcoinExchange &map) {
 	std::list<std::pair<std::string, std::string> > &m = map.input_data;
 	for (std::list<std::pair<std::string, std::string> >::iterator it =
 			 m.begin();
 		 it != m.end();
-		 ++it)
-	{
+		 ++it) {
 		double f_number = atof(it->second.c_str());
 		if (it->second == "")
 			it->second = "Error: bad input => " + it->first;
@@ -93,3 +83,89 @@ void validate_value(BitcoinExchange &map)
 			it->second = "Error: too large a number.";
 	}
 }
+
+bool isLeapYear(int year) {
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool isValidDate(int year, int month, int day) {
+	// the 1st element represents the number of days in January,
+	// second for Feb and so on, the last element represents days in Dec
+	int daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	// Check if year is valid (greater than 0)
+	if (year <= 0)
+		return false;
+
+	// Check if month is between 1 and 12
+	if (month < 1 || month > 12)
+		return false;
+
+	// Check for February in case of leap year
+	if (month == 2 && isLeapYear(year)) {
+		if (day < 1 || day > 29)
+			return false;
+	} else {
+		// Check if day is within the range for the given month
+		if (day < 1 || day > daysInMonth[month - 1])
+			return false;
+	}
+	// If all conditions are met, the date is valid
+	return true;
+}
+
+void validate_date(BitcoinExchange &map) {
+	std::list<std::pair<std::string, std::string> > &m = map.input_data;
+	for (std::list<std::pair<std::string, std::string> >::iterator it =
+			 m.begin();
+		 it != m.end();
+		 ++it) {
+		bool valid = true;
+		int year = std::atoi(it->first.substr(0, 4).c_str());
+		int month = std::atoi(it->first.substr(6, 2).c_str());
+		int day = std::atoi(it->first.substr(8, 2).c_str());
+		if (isValidDate(year, month, day) != valid)
+			it->second = "Error: bad input => " + it->first;
+	}
+}
+
+void findLowerBound(BitcoinExchange &map) {
+	std::map<std::string, std::string> &m_other = map.other_data;
+	std::list<std::pair<std::string, std::string> > &m_input = map.input_data;
+	std::map<std::string, std::string>::iterator itOther;
+
+	for (std::list<std::pair<std::string, std::string> >::iterator it =
+			 m_input.begin();
+		 it != m_input.end();
+		 ++it) {
+		char *endptr;
+		double input_val = strtod(it->second.c_str(), &endptr);
+		if (*endptr != '\0') {
+			std::cout << it->second << std::endl;
+			continue;
+		}
+		itOther = m_other.lower_bound(it->first);
+
+		if (itOther == m_other.end()) {
+			--itOther;
+		} else if (itOther->first != it->first) {
+			if (itOther != m_other.begin())
+				--itOther;
+			else {
+				std::cout << "Error: no valid date found for " << it->first
+						  << std::endl;
+				continue;
+			}
+		}
+		std::string val = it->second;
+		double rate = std::atof(itOther->second.c_str());
+		double result = input_val * rate;
+		std::ostringstream oss;
+		oss << result;
+		it->second = oss.str();
+		if (!(it->second.substr(0, 5) == "Error"))
+			std::cout << it->first << " => " <<  val << " = " << it->second
+				  << std::endl;
+	}
+}
+
