@@ -6,19 +6,20 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:32:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 15:01:48 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:25:55 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int main(int ac, char **av)
-{
+int main(int ac, char **av) {
 	BitcoinExchange map;
-	if (ac == 2)
-	{
-		data_add("data.csv", map);
-		input_add(av[1], map);
+	if (ac == 2) {
+		if (data_add("data.csv", map) == -1 || input_add(av[1], map) == -1)
+		{
+			std::cerr << "Error: could not open file" << std::endl;
+			return 1;
+		}
 		validate_value(map);
 		validate_date(map);
 		findLowerBound(map);
@@ -29,8 +30,7 @@ int main(int ac, char **av)
 		// {
 		// 	std::cout << it->first << " => " << it->second << std::endl;
 		// }
-	}
-	else
+	} else
 		std::cerr << "Error: could not open file" << std::endl;
 	return 0;
 }

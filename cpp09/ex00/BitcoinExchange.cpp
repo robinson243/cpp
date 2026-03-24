@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 15:00:00 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 16:35:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 	return *this;
 }
 
-void data_add(std::string file, BitcoinExchange &map) {
+int data_add(std::string file, BitcoinExchange &map) {
 	std::ifstream myFile(file.c_str());
+	if (!myFile.is_open())
+		return -1;
 	std::string line;
 	std::string content;
 	getline(myFile, line);
@@ -41,10 +43,13 @@ void data_add(std::string file, BitcoinExchange &map) {
 			line.substr(0, 10), line.substr(11, line.length())));
 	}
 	myFile.close();
+	return 0;
 }
 
-void input_add(std::string file, BitcoinExchange &map) {
+int input_add(std::string file, BitcoinExchange &map) {
 	std::ifstream myFile(file.c_str());
+	if (!myFile.is_open())
+		return -1;
 	std::string line;
 	std::string content;
 	getline(myFile, line);
@@ -66,6 +71,7 @@ void input_add(std::string file, BitcoinExchange &map) {
 	// 	std::cout << it->first << " => " << it->second << std::endl;
 	// }
 	myFile.close();
+	return 0;
 }
 
 void validate_value(BitcoinExchange &map) {
@@ -120,11 +126,10 @@ void validate_date(BitcoinExchange &map) {
 			 m.begin();
 		 it != m.end();
 		 ++it) {
-		bool valid = true;
 		int year = std::atoi(it->first.substr(0, 4).c_str());
-		int month = std::atoi(it->first.substr(6, 2).c_str());
+		int month = std::atoi(it->first.substr(5, 2).c_str());
 		int day = std::atoi(it->first.substr(8, 2).c_str());
-		if (isValidDate(year, month, day) != valid)
+		if (isValidDate(year, month, day) != true)
 			it->second = "Error: bad input => " + it->first;
 	}
 }
@@ -145,15 +150,12 @@ void findLowerBound(BitcoinExchange &map) {
 			continue;
 		}
 		itOther = m_other.lower_bound(it->first);
-
 		if (itOther == m_other.end()) {
 			--itOther;
 		} else if (itOther->first != it->first) {
 			if (itOther != m_other.begin())
 				--itOther;
 			else {
-				std::cout << "Error: no valid date found for " << it->first
-						  << std::endl;
 				continue;
 			}
 		}

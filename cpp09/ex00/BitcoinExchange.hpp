@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 22:50:48 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 14:39:55 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 15:51:33 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ class BitcoinExchange {
 	BitcoinExchange &operator=(const BitcoinExchange &other);
 };
 
-void data_add(std::string file, BitcoinExchange &map);
-void input_add(std::string file, BitcoinExchange &map);
+int data_add(std::string file, BitcoinExchange &map);
+int input_add(std::string file, BitcoinExchange &map);
 void validate_value(BitcoinExchange &map);
 bool isLeapYear(int year);
 bool isValidDate(int year, int month, int day);
