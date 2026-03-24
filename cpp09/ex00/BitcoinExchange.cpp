@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 16:35:51 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 18:53:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,12 +155,18 @@ void findLowerBound(BitcoinExchange &map) {
 		} else if (itOther->first != it->first) {
 			if (itOther != m_other.begin())
 				--itOther;
-			else {
-				continue;
-			}
 		}
 		std::string val = it->second;
 		double rate = std::atof(itOther->second.c_str());
+		std::map<std::string, std::string>::iterator end = m_other.end();
+		--end;
+		std::map<std::string, std::string>::iterator first = m_other.begin();
+		if (end->first < it->first) {
+			rate = std::atof(end->second.c_str());
+		}
+		if (first->first > it->first) {
+			rate = 0.0;
+		}
 		double result = input_val * rate;
 		std::ostringstream oss;
 		oss << result;
@@ -170,4 +176,3 @@ void findLowerBound(BitcoinExchange &map) {
 				  << std::endl;
 	}
 }
-
