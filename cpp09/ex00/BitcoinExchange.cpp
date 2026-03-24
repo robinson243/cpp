@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/23 17:51:39 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/24 02:37:17 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,33 @@
 
 BitcoinExchange::BitcoinExchange() {};
 BitcoinExchange::~BitcoinExchange() {};
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
-	if (this != &other) {
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
+{
+	if (this != &other)
+	{
 		this->input_data = other.input_data;
 		this->other_data = other.other_data;
 	}
 }
 
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
-	if (this != &other) {
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
+{
+	if (this != &other)
+	{
 		this->input_data = other.input_data;
 		this->other_data = other.other_data;
 	}
 	return *this;
 }
 
-void data_add(std::string file, BitcoinExchange map) {
+void data_add(std::string file, BitcoinExchange &map)
+{
 	std::ifstream myFile(file.c_str());
 	std::string line;
 	std::string content;
 	getline(myFile, line);
-	while (getline(myFile, line)) {
+	while (getline(myFile, line))
+	{
 		content += line;
 		content += '\n';
 		map.other_data.insert(std::pair<std::string, std::string>(
@@ -43,12 +49,14 @@ void data_add(std::string file, BitcoinExchange map) {
 	myFile.close();
 }
 
-void input_add(std::string file, BitcoinExchange map) {
+void input_add(std::string file, BitcoinExchange &map)
+{
 	std::ifstream myFile(file.c_str());
 	std::string line;
 	std::string content;
 	getline(myFile, line);
-	while (getline(myFile, line)) {
+	while (getline(myFile, line))
+	{
 		content += line;
 		content += '\n';
 		std::string tmp;
@@ -68,12 +76,20 @@ void input_add(std::string file, BitcoinExchange map) {
 	myFile.close();
 }
 
-void validate_value(BitcoinExchange map) {
-	std::list<std::pair<std::string, std::string>> m = map.input_data;
-	for (std::list<std::pair<std::string, std::string>>::iterator it =
+void validate_value(BitcoinExchange &map)
+{
+	std::list<std::pair<std::string, std::string> > &m = map.input_data;
+	for (std::list<std::pair<std::string, std::string> >::iterator it =
 			 m.begin();
 		 it != m.end();
-		 ++it) {
-		std::cout << it->first << " => " << it->second << std::endl;
+		 ++it)
+	{
+		double f_number = atof(it->second.c_str());
+		if (it->second == "")
+			it->second = "Error: bad input => " + it->first;
+		else if (f_number < 0)
+			it->second = "Error: not a positive number.";
+		else if (f_number > 1000)
+			it->second = "Error: too large a number.";
 	}
 }
