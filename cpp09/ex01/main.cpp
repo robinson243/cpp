@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 16:07:25 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 17:16:24 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/25 18:07:54 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(int ac, char **av)
     {
         RPN calculator(av[1]);
         calculator.showElement();
+        std::cout << calculator.isNumber() << std::endl;
     }
     else
         std::cerr << "Error" << std::endl;
