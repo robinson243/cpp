@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 13:38:33 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/25 14:25:01 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,11 @@ void findLowerBound(BitcoinExchange &map)
 	std::map<std::string, std::string> &m_other = map.other_data;
 	std::list<std::pair<std::string, std::string> > &m_input = map.input_data;
 	std::map<std::string, std::string>::iterator itOther;
-
+	if (m_other.empty())
+    {
+        std::cerr << "Error: empty database" << std::endl;
+        return;
+    }
 	for (std::list<std::pair<std::string, std::string> >::iterator it =
 			 m_input.begin();
 		 it != m_input.end();
@@ -196,34 +200,25 @@ void findLowerBound(BitcoinExchange &map)
 			continue;
 		}
 		itOther = m_other.lower_bound(it->first);
-		if (itOther == m_other.end())
-		{
-			--itOther;
-		}
-		else if (itOther->first != it->first)
-		{
-			if (itOther != m_other.begin())
-				--itOther;
-		}
+        if (itOther == m_other.end() || itOther->first != it->first)
+        {
+            if (itOther == m_other.begin())
+            {
+                std::cout << it->first << " => " << it->second
+                          << " = 0" << std::endl;
+                continue;
+            }
+            --itOther;
+        }
 		std::string val = it->second;
 		double rate = std::atof(itOther->second.c_str());
 		std::map<std::string, std::string>::iterator end = m_other.end();
 		--end;
-		std::map<std::string, std::string>::iterator first = m_other.begin();
-		if (end->first < it->first)
-		{
-			rate = std::atof(end->second.c_str());
-		}
-		if (first->first > it->first)
-		{
-			rate = 0.0;
-		}
 		double result = input_val * rate;
 		std::ostringstream oss;
 		oss << result;
 		it->second = oss.str();
-		if (!(it->second.substr(0, 5) == "Error"))
-			std::cout << it->first << " => " << val << " = " << it->second
+		std::cout << it->first << " => " << val << " = " << it->second
 					  << std::endl;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 13:32:57 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 16:25:55 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:49:39 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ int main(int ac, char **av) {
 		validate_value(map);
 		validate_date(map);
 		findLowerBound(map);
-		// for (std::list<std::pair<std::string, std::string> >::iterator it =
-		// 		 map.input_data.begin();
-		// 	 it != map.input_data.end();
-		// 	 ++it)
-		// {
-		// 	std::cout << it->first << " => " << it->second << std::endl;
-		// }
 	} else
 		std::cerr << "Error: could not open file" << std::endl;
 	return 0;
