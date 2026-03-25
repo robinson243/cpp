@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 01:26:01 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:38:33 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,20 @@ void validate_value(BitcoinExchange &map)
 			it->second = "Error: bad input => " + it->first;
 			continue;
 		}
-		double f_number = atof(it->second.c_str());
+		if (it->second.find_first_not_of(" \t") == std::string::npos)
+		{
+		    it->second = "Error: bad input => " + it->first;
+		    continue;
+		}
+		char *end;
+		double f_number = strtod(it->second.c_str(), &end);
+		while (*end == ' ')
+            end++;
+		if (*end != '\0')
+		{
+		    it->second = "Error: bad input => " + it->first;
+		    continue;
+		}
 		if (it->second == "")
 			it->second = "Error: bad input => " + it->first;
 		else if (f_number < 0)
