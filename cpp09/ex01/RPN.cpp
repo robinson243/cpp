@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:48:35 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/26 15:16:47 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 17:07:42 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,18 @@ RPN::~RPN() {};
 RPN::RPN(const RPN &other) {
 	if (this != &other) {
 		this->array = other.array;
-		this->number = other.number;
-		this->op = other.op;
 	}
 }
 
 RPN &RPN ::operator=(const RPN &other) {
 	if (this != &other) {
 		this->array = other.array;
-		this->number = other.number;
-		this->op = other.op;
 	}
 	return *this;
 }
 
 std::stack<std::string> RPN::getArray() {
 	return this->array;
-}
-
-std::stack<std::string> RPN::getNumber() {
-	return this->number;
-}
-
-std::stack<std::string> RPN::getOp() {
-	return this->op;
 }
 
 RPN ::RPN(char *s) {
@@ -72,23 +60,11 @@ RPN ::RPN(char *s) {
 void RPN::showElement() {
 	RPN tmp(*this);
 	std::stack<std::string> v = tmp.getArray();
-	std::stack<std::string> op = tmp.getOp();
-	std::stack<std::string> num = tmp.getNumber();
 
 	std::cout << "my array stack" << std::endl;
 	while (!v.empty()) {
 		std::cout << v.top() << std::endl;
 		v.pop();
-	}
-	std::cout << "my number stack" << std::endl;
-	while (!num.empty()) {
-		std::cout << num.top() << std::endl;
-		num.pop();
-	}
-	std::cout << "my operator stack" << std::endl;
-	while (!op.empty()) {
-		std::cout << op.top() << std::endl;
-		op.pop();
 	}
 };
 
@@ -110,9 +86,8 @@ bool isOperator(std::string a) {
 }
 
 void RPN::goodOrder() {
-	std::stack<int> s;
-	std::stack<int> temp;
-
+	std::stack<std::string> &s = this->array;
+	std::stack<std::string> temp;
 	while (!s.empty()) {
 		temp.push(s.top());
 		s.pop();
@@ -122,18 +97,53 @@ void RPN::goodOrder() {
 }
 
 bool RPN::isValid() {
-	this->goodOrder();
-	std::stack<std::string> &v = array;
-	std::stack<std::string> &opi = op;
-	std::stack<std::string> &num = number;
+	std::stack<std::string> v = this->getArray();
 	while (!v.empty()) {
-		if (isInt(v.top())) {
-			num.push(v.top());
-		} else if (isOperator(v.top())) {
-			opi.push(v.top());
-		} else
+		if (!isInt(v.top()) && !isOperator(v.top())) {
 			return false;
+		}
 		v.pop();
 	}
 	return true;
+}
+
+void RPN::solution() {
+	this->goodOrder();
+	std::stack<std::string> v = this->array;
+	std::stack<std::string> o;
+	while (!v.empty()) {
+		if (isInt(v.top()))
+			o.push(v.top());
+		else {
+			std::string a = o.top();
+			o.pop();
+			std::string b = o.top();
+			o.pop();
+			std::ostringstream s;
+			if (v.top() == "+") {
+				int num = atoi(b.c_str()) + atoi(a.c_str());
+				s << num;
+				o.push(s.str());
+			} else if (v.top() == "-") {
+				int num = atoi(b.c_str()) - atoi(a.c_str());
+				s << num;
+				o.push(s.str());
+			} else if (v.top() == "*") {
+				int num = atoi(b.c_str()) * atoi(a.c_str());
+				s << num;
+				o.push(s.str());
+			} else if (v.top() == "/") {
+				int num = atoi(b.c_str()) / atoi(a.c_str());
+				s << num;
+				o.push(s.str());
+			}
+		}
+		v.pop();
+	}
+	if (o.size() > 1)
+	{
+		std::cerr << "Error" << std::endl;
+		return ;	
+	}
+	std::cout << o.top() << std::endl;
 }
