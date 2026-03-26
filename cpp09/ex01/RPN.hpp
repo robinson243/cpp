@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:19:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 18:20:38 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 13:27:20 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,20 @@
 class RPN {
   private:
 	std::stack<std::string> array;
+	std::stack<std::string> number;
+	std::stack<std::string> op;
+
   public:
 	RPN();
 	~RPN();
 	RPN(const RPN &other);
 	RPN &operator=(const RPN &other);
-    std::stack<std::string> getArray();
-    RPN(char *s);
-    void showElement();
-    bool isValid();
+	std::stack<std::string> getNumber();
+	std::stack<std::string> getOp();
+	std::stack<std::string> getArray();
+	RPN(char *s);
+	void showElement();
+	bool isValid();
 };
 bool isInt(std::string a);
 bool isOperator(std::string a);

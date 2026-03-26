@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:48:35 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 18:31:16 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 14:35:50 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,30 @@ RPN::~RPN() {};
 RPN::RPN(const RPN &other) {
 	if (this != &other) {
 		this->array = other.array;
+		this->number = other.number;
+		this->op = other.op;
 	}
 }
 
 RPN &RPN ::operator=(const RPN &other) {
 	if (this != &other) {
 		this->array = other.array;
+		this->number = other.number;
+		this->op = other.op;
 	}
 	return *this;
 }
 
 std::stack<std::string> RPN::getArray() {
 	return this->array;
+}
+
+std::stack<std::string> RPN::getNumber() {
+	return this->number;
+}
+
+std::stack<std::string> RPN::getOp() {
+	return this->op;
 }
 
 RPN ::RPN(char *s) {
@@ -58,19 +70,34 @@ RPN ::RPN(char *s) {
 };
 
 void RPN::showElement() {
-	RPN tmp = *this;
+	RPN tmp(*this);
 	std::stack<std::string> v = tmp.getArray();
+	std::stack<std::string> op = tmp.getOp();
+	std::stack<std::string> num = tmp.getNumber();
+
+	std::cout << "my array stack" << std::endl;
 	while (!v.empty()) {
 		std::cout << v.top() << std::endl;
 		v.pop();
+	}
+	std::cout << "my number stack" << std::endl;
+	while (!num.empty()) {
+		std::cout << num.top() << std::endl;
+		num.pop();
+	}
+	std::cout << "my operator stack" << std::endl;
+	while (!op.empty()) {
+		std::cout << op.top() << std::endl;
+		op.pop();
 	}
 };
 
 bool isInt(std::string a) {
 	if (a.length() > 1)
 		return false;
-	if (isdigit(atoi(a.c_str())))
+	if (isdigit(a[0])) {
 		return true;
+	}
 	return false;
 }
 
@@ -83,13 +110,19 @@ bool isOperator(std::string a) {
 }
 
 bool RPN::isValid() {
-	RPN tmp = *this;
-	std::stack<std::string> v = tmp.getArray();
-	std::string val1 = v.top();
-	v.pop();
-	std::string val2 = v.top();
-	v.pop();
-	if (!isInt(val1) || !isInt(val2)) {
-		return false;
+	std::stack<std::string> &v = array;
+	std::stack<std::string> &opi = op;
+	std::stack<std::string> &num = number;
+	// std::cout << "size : " << v.size() << std::endl;
+	while (!v.empty()) {
+		if (isInt(v.top())) {
+			num.push(v.top());
+		} else if (isOperator(v.top())) {
+			opi.push(v.top());
+		}
+		else
+			return false;
+		v.pop();
 	}
+	return true;
 }
