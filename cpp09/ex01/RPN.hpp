@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:19:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/26 13:27:20 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 15:15:49 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class RPN {
 	RPN(char *s);
 	void showElement();
 	bool isValid();
+  void goodOrder();
 };
 bool isInt(std::string a);
 bool isOperator(std::string a);

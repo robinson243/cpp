@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:48:35 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/26 14:35:50 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 15:16:47 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,29 @@ bool isOperator(std::string a) {
 	return false;
 }
 
+void RPN::goodOrder() {
+	std::stack<int> s;
+	std::stack<int> temp;
+
+	while (!s.empty()) {
+		temp.push(s.top());
+		s.pop();
+	}
+
+	s = temp;
+}
+
 bool RPN::isValid() {
+	this->goodOrder();
 	std::stack<std::string> &v = array;
 	std::stack<std::string> &opi = op;
 	std::stack<std::string> &num = number;
-	// std::cout << "size : " << v.size() << std::endl;
 	while (!v.empty()) {
 		if (isInt(v.top())) {
 			num.push(v.top());
 		} else if (isOperator(v.top())) {
 			opi.push(v.top());
-		}
-		else
+		} else
 			return false;
 		v.pop();
 	}
