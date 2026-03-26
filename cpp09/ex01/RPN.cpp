@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:48:35 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/26 17:07:42 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/26 17:23:28 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ bool isInt(std::string a) {
 bool isOperator(std::string a) {
 	if (a.length() > 1)
 		return false;
-	if ("+" == a || "-" == a || "/" == a || "*")
+	if ("+" == a || "-" == a || "/" == a || "*" == a)
 		return true;
 	return false;
 }
