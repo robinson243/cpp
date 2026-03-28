@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:49:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/28 12:18:23 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/28 12:30:36 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,14 @@ Span::Span() {};
 Span::~Span() {};
 
 Span &Span::operator=(const Span &other) {
-	if (this != &other) {
-		_number.resize(other._number.size());
-		std::copy(
-			other._number.begin(), other._number.end(), this->_number.begin());
-	}
+	if (this != &other)
+		_number = other._number;
 	return *this;
 }
 
 Span::Span(const Span &other) {
 	if (this != &other) {
-		_number.resize(other._number.size());
-		std::copy(
-			other._number.begin(), other._number.end(), this->_number.begin());
+		_number = other._number;
 	}
 }
 
@@ -55,8 +50,8 @@ int Span::shortestSpan() {
 int Span::longestSpan() {
 	if (_number.size() < 2)
 		throw std::underflow_error("Not enough elements");
-	return (*max_element(this->_number.begin(), this->_number.end())
-			- *min_element(this->_number.begin(), this->_number.end()));
+	return (*std::max_element(this->_number.begin(), this->_number.end())
+			- *std::min_element(this->_number.begin(), this->_number.end()));
 }
 
 void Span::addNumber(int n) {
