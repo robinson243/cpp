@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 13:08:50 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/28 12:29:30 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/28 14:28:53 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class Span {
 	int shortestSpan();
 	int longestSpan();
 	void addNumber(int n);
+	void addNumber(std::vector<int>::iterator begin,
+				   std::vector<int>::iterator end);
 	const std::vector<int> &getNum() const;
 };
 

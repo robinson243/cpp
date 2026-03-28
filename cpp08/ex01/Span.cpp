@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:49:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/28 12:30:36 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/28 14:31:43 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,14 @@ void Span::addNumber(int n) {
 	if (this->_number.size() >= this->_number.capacity())
 		throw std::length_error("Container is full !");
 	this->_number.push_back(n);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	for (std::vector<int>::size_type i = 0; begin + i != end ; i++)
+	{
+		addNumber(*begin + i);
+	}
 }
 
 const std::vector<int> &Span::getNum() const {
