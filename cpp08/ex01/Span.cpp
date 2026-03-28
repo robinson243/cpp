@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 16:49:01 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/21 15:54:56 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/28 12:18:23 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Span::Span(unsigned int n) {
 int Span::shortestSpan() {
 	std::vector<int> v = this->getNum();
 
-	sort(v.begin(), v.end());
+	std::sort(v.begin(), v.end());
 	int smallValue = INT_MAX;
 	if (v.size() < 2)
 		throw std::underflow_error("Not enough elements");
@@ -59,12 +59,12 @@ int Span::longestSpan() {
 			- *min_element(this->_number.begin(), this->_number.end()));
 }
 
-void Span::addNumber(unsigned int n) {
+void Span::addNumber(int n) {
 	if (this->_number.size() >= this->_number.capacity())
 		throw std::length_error("Container is full !");
 	this->_number.push_back(n);
 }
 
-std::vector<int> Span::getNum() {
-	return this->_number;
+const std::vector<int> &Span::getNum() const {
+	return _number;
 }
