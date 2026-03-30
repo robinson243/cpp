@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/30 20:09:33 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/31 00:34:21 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,15 @@ void PmergeMe::initVec(char *s)
 	}
 };
 
-std::vector<std::pair<int, int>> PmergeMe::makePair(std::vector<int> &grands)
+std::vector<std::pair<int, int> > PmergeMe::makePair(std::vector<int> &grands)
 {
 	size_t i = 0;
-	size_t j = 1;
-	std::vector<std::pair<int, int>> vecPair;
+	std::vector<std::pair<int, int> > vecPair;
 
-	while (i < (grands.size()))
+	while (i + 1 < (grands.size()))
 	{
-		vecPair.push_back(std::make_pair(grands[i], grands[j]));
+		vecPair.push_back(std::make_pair(grands[i], grands[i + 1]));
 		i += 2;
-		j += 2;
 	}
 	if (grands.size() % 2 == 1)
 		vecPair.push_back(std::make_pair(grands[grands.size() - 1], -1));
@@ -78,7 +76,7 @@ std::vector<std::pair<int, int>> PmergeMe::makePair(std::vector<int> &grands)
 	return vecPair;
 }
 
-void PmergeMe::doGreatPair(std::vector<std::pair<int, int>> &vecPair)
+void PmergeMe::doGreatPair(std::vector<std::pair<int, int> > &vecPair)
 {
 	for (size_t i = 0; i < vecPair.size(); i++)
 	{
@@ -87,7 +85,7 @@ void PmergeMe::doGreatPair(std::vector<std::pair<int, int>> &vecPair)
 	}
 }
 
-std::vector<int> PmergeMe:: highPair(std::vector<std::pair<int, int> > &vecPair )
+std::vector<int> PmergeMe::highPair(std::vector<std::pair<int, int> > &vecPair)
 {
 	std::vector<int> pair;
 	for (size_t i = 0; i < vecPair.size(); i++)
@@ -99,12 +97,18 @@ std::vector<int> PmergeMe:: highPair(std::vector<std::pair<int, int> > &vecPair 
 
 std::vector<int> PmergeMe::sortVec(std::vector<int> grands)
 {
-	std::vector<std::pair<int, int>> vecPair;
+	std::vector<std::pair<int, int> > vecPair;
 	std::vector<int> higherPair;
 	if (grands.size() <= 1)
 		return grands;
 	vecPair = makePair(grands);
 	doGreatPair(vecPair);
 	higherPair = highPair(vecPair);
-		
+	higherPair = sortVec(higherPair);
+	return higherPair;
+}
+
+std::vector<int> PmergeMe::getVec()
+{
+	return vec;
 }
