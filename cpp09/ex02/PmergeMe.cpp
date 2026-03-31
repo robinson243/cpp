@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/31 00:34:21 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/31 02:31:35 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@ void PmergeMe::doGreatPair(std::vector<std::pair<int, int> > &vecPair)
 		if (vecPair[i].first > vecPair[i].second)
 			std::swap(vecPair[i].first, vecPair[i].second);
 	}
+}
+
+std::vector<int> PmergeMe::lowPair(std::vector<std::pair<int,int> >& vecPair)
+{
+    std::vector<int> small;
+
+    for (size_t i = 0; i < vecPair.size(); i++)
+        small.push_back(vecPair[i].first);
+
+    return small;
 }
 
 std::vector<int> PmergeMe::highPair(std::vector<std::pair<int, int> > &vecPair)

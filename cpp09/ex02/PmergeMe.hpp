@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:43:53 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/31 00:30:02 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/31 02:31:23 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	std::vector<std::pair<int, int> > makePair(std::vector<int> &grands);
 	void doGreatPair(std::vector<std::pair<int, int> > &vecPair);
 	std::vector<int> highPair(std::vector<std::pair<int, int> > &vecPair );
+	std::vector<int> lowPair(std::vector<std::pair<int,int> >& vecPair);
 	std::vector<int> sortVec(std::vector<int> grands);
 	std::vector<int> getVec();
 	
