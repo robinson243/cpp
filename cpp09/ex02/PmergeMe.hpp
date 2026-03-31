@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:43:53 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/31 02:31:23 by romukena         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:37:56 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ public:
 	std::vector<int> lowPair(std::vector<std::pair<int,int> >& vecPair);
 	std::vector<int> sortVec(std::vector<int> grands);
 	std::vector<int> getVec();
+	int Jacobsthal(int n);
+	void binaryInsert(std::vector<int> &result, int val, size_t bound);
+	std::vector<int> buildJacobOrder(size_t size);
 	
 };
 
