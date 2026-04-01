@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/01 13:51:10 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 00:57:19 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ bool PmergeMe::isParam (std::string &line)
     return !line.empty() && it == line.end();
 }
 /*================= Vector =================*/
+
+bool PmergeMe::isDuplicate(std::vector<int> &vec)
+{
+	std::vector<int>::iterator it;
+	for (size_t i = 0; i < vec.size(); i++)
+	{
+		it = std::find(vec.begin() + i + 1, vec.end(), vec[i]);
+		if (it != vec.end())
+			return false;
+	}
+	return true;
+}
 
 bool PmergeMe::initVec(char *s)
 {

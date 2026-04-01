@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:43:53 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/01 10:34:57 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 00:43:33 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ public:
 	std::vector<int> getVec();
 	void binaryInsert(std::vector<int> &result, int val, size_t bound);
 	std::vector<int> buildJacobOrder(size_t size);
+	bool isDuplicate(std::vector<int> &vec);
 	/* ====================== Deque ======================= */
 	bool initDeque(char *s);
 	std::deque<std::pair<int, int> > makePair(std::deque<int> &grands);

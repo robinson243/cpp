@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:40:11 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/01 13:55:30 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 01:02:26 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ int main(int ac, char **av)
 			std::cerr << "There is a things other than numbers" << std::endl;
 			return 1;
 		}
+		std::vector<int> veco = p.getVec();
+		if (!p.isDuplicate(veco))
+		{
+			std::cerr << "There is a duplicate numbers" << std::endl;
+			return 1;
+		}
+		
 		std::cout << "Before:	";
 		for (size_t i = 0; i < p.getVec().size(); i++)
 		{
