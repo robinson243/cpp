@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/01 01:46:13 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/01 13:51:10 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,31 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 	return *this;
 }
 
-int PmergeMe:: Jacobsthal(int n)
+int PmergeMe::Jacobsthal(int n)
 {
-    // base case
     if (n == 0)
-        return 0;
-
-    // base case
+		return 0;
     if (n == 1)
-        return 1;
-
-    // recursive step.
-    return Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2);
+		return 1;
+    int n0 = 0, n1 = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        int next = n1 + 2 * n0;
+        n0 = n1;
+        n1 = next;
+    }
+    return n1;
 }
 
+bool PmergeMe::isParam (std::string &line)
+{
+    std::string::const_iterator it = line.begin();
+    while (it != line.end() && std::isdigit(*it)) ++it;
+    return !line.empty() && it == line.end();
+}
 /*================= Vector =================*/
 
-void PmergeMe::initVec(char *s)
+bool PmergeMe::initVec(char *s)
 {
 	std::string str(s);
 	size_t first;
@@ -69,6 +77,8 @@ void PmergeMe::initVec(char *s)
 		{
 			last = i;
 			std::string strToAdd = str.substr(first, (last - first));
+			if (!isParam(strToAdd))
+				return false;
 			this->vec.push_back(atoi(strToAdd.c_str()));
 		}
 		while (isspace(str[i]) != 0)
@@ -76,6 +86,7 @@ void PmergeMe::initVec(char *s)
 			i++;
 		}
 	}
+	return true;
 };
 
 std::vector<std::pair<int, int> > PmergeMe::makePair(std::vector<int> &grands)
@@ -195,13 +206,14 @@ std::vector<int> PmergeMe::buildJacobOrder(size_t size)
 	size_t n = 2;
 	while ((size_t)Jacobsthal(n) < size)
 	{
-		
-		for (int j = Jacobsthal(n) - 1; j >= Jacobsthal(n-1) ; j--)
-		{
-			if (j <(int)size)
-				order.push_back(j);
-		}
-		n++;
+		int curr = Jacobsthal(n);
+		int prev = Jacobsthal(n - 1);
+        for (int j = curr - 1; j >= prev; j--)
+        {
+            if (j < (int)size)
+                order.push_back(j);
+        }
+        n++;
 	}
 	size_t j = Jacobsthal(n - 1);
 	while ( j < size)
@@ -217,7 +229,7 @@ std::vector<int> PmergeMe::buildJacobOrder(size_t size)
 
 
 
-void PmergeMe::initDeque(char *s)
+bool PmergeMe::initDeque(char *s)
 {
 	std::string str(s);
 	size_t first;
@@ -241,6 +253,8 @@ void PmergeMe::initDeque(char *s)
 		{
 			last = i;
 			std::string strToAdd = str.substr(first, (last - first));
+			if (!isParam(strToAdd))
+				return false;
 			this->deque.push_back(atoi(strToAdd.c_str()));
 		}
 		while (isspace(str[i]) != 0)
@@ -248,6 +262,7 @@ void PmergeMe::initDeque(char *s)
 			i++;
 		}
 	}
+	return true;
 };
 
 std::deque<std::pair<int, int> > PmergeMe::makePair(std::deque<int> &grands)
@@ -367,13 +382,14 @@ std::deque<int> PmergeMe::buildJacobOrderDeque(size_t size)
 	size_t n = 2;
 	while ((size_t)Jacobsthal(n) < size)
 	{
-		
-		for (int j = Jacobsthal(n) - 1; j >= Jacobsthal(n-1) ; j--)
-		{
-			if (j <(int)size)
-				order.push_back(j);
-		}
-		n++;
+		int curr = Jacobsthal(n);
+		int prev = Jacobsthal(n - 1);
+        for (int j = curr - 1; j >= prev; j--)
+        {
+            if (j < (int)size)
+                order.push_back(j);
+        }
+        n++;
 	}
 	size_t j = Jacobsthal(n - 1);
 	while ( j < size)
