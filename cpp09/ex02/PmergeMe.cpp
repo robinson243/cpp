@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 00:57:19 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:55:13 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,19 @@ bool PmergeMe::isParam (std::string &line)
     while (it != line.end() && std::isdigit(*it)) ++it;
     return !line.empty() && it == line.end();
 }
+
+std::string PmergeMe:: joinArgs(int ac, char **av)
+{
+	std::string res;
+	for (size_t i = 1; (int)i < ac; i++)
+	{
+		res.append(av[i]);
+		if ((int)i == ac - 1)
+			break;
+		res.append(" ");
+	}
+	return res;
+}
 /*================= Vector =================*/
 
 bool PmergeMe::isDuplicate(std::vector<int> &vec)
@@ -65,7 +78,7 @@ bool PmergeMe::isDuplicate(std::vector<int> &vec)
 	return true;
 }
 
-bool PmergeMe::initVec(char *s)
+bool PmergeMe::initVec(const char *s)
 {
 	std::string str(s);
 	size_t first;
@@ -241,7 +254,7 @@ std::vector<int> PmergeMe::buildJacobOrder(size_t size)
 
 
 
-bool PmergeMe::initDeque(char *s)
+bool PmergeMe::initDeque(const char *s)
 {
 	std::string str(s);
 	size_t first;

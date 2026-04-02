@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:40:11 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 01:02:26 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:56:42 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,15 @@
 int main(int ac, char **av)
 {
 	PmergeMe p;
-	if (ac == 2)
+	
+	if (ac >= 2)
 	{
-		if (!p.initVec(av[1]) || !p.initDeque(av[1]))
+		std::string res;
+		if (ac == 2)
+			res = av[1];
+		else
+			res = p.joinArgs(ac, av);
+		if (!p.initVec(res.c_str()) || !p.initDeque(res.c_str()))
 		{
 			std::cerr << "There is a things other than numbers" << std::endl;
 			return 1;
@@ -64,13 +70,10 @@ int main(int ac, char **av)
 		gettimeofday(&end, NULL);
 
 		double millis = (end.tv_sec - begin.tv_sec) * 1000000 + (end.tv_usec - begin.tv_usec);
-		std::cout << "Time to process a range of	" << vec.size() << " elements with std::vector :	" << std::fixed << std::setprecision(5) <<  millis << " us" << std::endl;
-
-		std::cout << "Time to process a range of	" << deq.size() << " elements with std::deque  :	"<< std::fixed << std::setprecision(5) << millisD << " us" << std::endl;
-
-		// for (size_t i = 0; i < result.size(); i++)
-		// 	std::cout << result[i] << " ";
-		// std::cout << std::endl;
+		std::cout << "Time to process a range of	" << vec.size() << " elements with std::vector :	" 
+		<< std::fixed << std::setprecision(5) <<  millis << " us" << std::endl;
+		std::cout << "Time to process a range of	" << deq.size() 
+		<< " elements with std::deque  :	"<< std::fixed << std::setprecision(5) << millisD << " us" << std::endl;
 	}
 	return 0;
 }

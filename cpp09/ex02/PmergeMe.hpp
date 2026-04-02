@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:43:53 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 00:43:33 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 12:54:30 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ public:
 	int Jacobsthal(int n);
 	bool isParam (std::string &line);
 	/* ====================== Vector ======================= */
-	bool initVec(char *s);
+	bool initVec(const char *s);
 	std::vector<std::pair<int, int> > makePair(std::vector<int> &grands);
 	void doGreatPair(std::vector<std::pair<int, int> > &vecPair);
 	std::vector<int> highPair(std::vector<std::pair<int, int> > &vecPair );
@@ -46,7 +46,7 @@ public:
 	std::vector<int> buildJacobOrder(size_t size);
 	bool isDuplicate(std::vector<int> &vec);
 	/* ====================== Deque ======================= */
-	bool initDeque(char *s);
+	bool initDeque(const char *s);
 	std::deque<std::pair<int, int> > makePair(std::deque<int> &grands);
 	void doGreatPair(std::deque<std::pair<int, int> > &vecPair);
 	std::deque<int> highPair(std::deque<std::pair<int, int> > &vecPair );
@@ -55,6 +55,7 @@ public:
 	std::deque<int> getDeque();
 	void binaryInsert(std::deque<int> &result, int val, size_t bound);
 	std::deque<int> buildJacobOrderDeque(size_t size);
+	std::string joinArgs(int ac, char **av);
 };
 
 
