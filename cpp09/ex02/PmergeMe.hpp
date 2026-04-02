@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:43:53 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 12:54:30 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:32:28 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <deque>
 #include <string>
 #include <limits>
+#include <climits>
 
 class PmergeMe
 {

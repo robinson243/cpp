@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 12:55:13 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:33:14 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,8 @@ bool PmergeMe::initVec(const char *s)
 		{
 			last = i;
 			std::string strToAdd = str.substr(first, (last - first));
-			if (!isParam(strToAdd))
+			long val = std::strtol(strToAdd.c_str(),NULL, 10 );
+			if (!isParam(strToAdd) || val > INT_MAX)
 				return false;
 			this->vec.push_back(atoi(strToAdd.c_str()));
 		}
@@ -278,6 +279,9 @@ bool PmergeMe::initDeque(const char *s)
 		{
 			last = i;
 			std::string strToAdd = str.substr(first, (last - first));
+			long val = std::strtol(strToAdd.c_str(),NULL, 10 );
+			if (!isParam(strToAdd) || val > INT_MAX)
+				return false;
 			if (!isParam(strToAdd))
 				return false;
 			this->deque.push_back(atoi(strToAdd.c_str()));

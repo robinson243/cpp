@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 00:40:11 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 12:56:42 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/02 17:40:32 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(int ac, char **av)
 			res = av[1];
 		else
 			res = p.joinArgs(ac, av);
-		if (!p.initVec(res.c_str()) || !p.initDeque(res.c_str()))
+		if (!p.initVec(res.c_str()) || !p.initDeque(res.c_str()) || res.empty())
 		{
 			std::cerr << "There is a things other than numbers" << std::endl;
 			return 1;
@@ -34,7 +34,7 @@ int main(int ac, char **av)
 		std::vector<int> veco = p.getVec();
 		if (!p.isDuplicate(veco))
 		{
-			std::cerr << "There is a duplicate numbers" << std::endl;
+			std::cerr << "There is a duplicate numbers or overflow numbers" << std::endl;
 			return 1;
 		}
 		
@@ -71,9 +71,9 @@ int main(int ac, char **av)
 
 		double millis = (end.tv_sec - begin.tv_sec) * 1000000 + (end.tv_usec - begin.tv_usec);
 		std::cout << "Time to process a range of	" << vec.size() << " elements with std::vector :	" 
-		<< std::fixed << std::setprecision(5) <<  millis << " us" << std::endl;
+		<< std::fixed << std::setprecision(2) <<  millis << " us" << std::endl;
 		std::cout << "Time to process a range of	" << deq.size() 
-		<< " elements with std::deque  :	"<< std::fixed << std::setprecision(5) << millisD << " us" << std::endl;
+		<< " elements with std::deque  :	"<< std::fixed << std::setprecision(2) << millisD << " us" << std::endl;
 	}
 	return 0;
 }
