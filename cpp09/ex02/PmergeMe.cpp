@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/03 12:50:08 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/03 15:32:17 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,48 +162,45 @@ std::vector<int> PmergeMe::highPair(std::vector<std::pair<int, int> > &vecPair)
 
 std::vector<int> PmergeMe::sortVec(std::vector<int> grands)
 {
-	std::vector<std::pair<int, int> > vecPair;
-	std::vector<int> orginalHigherPair;
-	std::vector<int> higherPair;
-	std::vector<int> small;
-	if (grands.size() <= 1)
-		return grands;
-	vecPair = makePair(grands);
-	doGreatPair(vecPair);
-	small = lowPair(vecPair);
-	higherPair = highPair(vecPair);
-	orginalHigherPair = higherPair;
-	higherPair = sortVec(higherPair);
-	std::vector<bool> used(orginalHigherPair.size(), false);
+    std::vector<std::pair<int, int> > vecPair;
+    std::vector<int> orginalHigherPair;
+    std::vector<int> higherPair;
+    std::vector<int> small;
+
+    if (grands.size() <= 1)
+        return grands;
+    vecPair = makePair(grands);
+    doGreatPair(vecPair);
+    small = lowPair(vecPair);
+    higherPair = highPair(vecPair);
+    orginalHigherPair = higherPair;
+    higherPair = sortVec(higherPair);
     std::vector<int> newSmall;
     for (size_t i = 0; i < higherPair.size(); i++)
     {
         for (size_t j = 0; j < orginalHigherPair.size(); j++)
         {
-            if (orginalHigherPair[j] == higherPair[i] && used[j] == false)
+            if (orginalHigherPair[j] == higherPair[i])
             {
                 newSmall.push_back(small[j]);
-                used[j] = true;
                 break;
             }
         }
     }
     small = newSmall;
-	std::vector<int> sortedHigherPair = higherPair;
-	if (small[0] != -1)
-		higherPair.insert(higherPair.begin() , small[0]);
-	
-	std::vector<int> order = buildJacobOrder(small.size());
-	
-	for (size_t i = 0; i < order.size(); i++)
-	{
-		size_t position  = std::find(higherPair.begin(), higherPair.end(), sortedHigherPair[order[i]]) - higherPair.begin();
-		if (small[order[i]] != -1)
-		{
-			binaryInsert(higherPair, small[order[i]], position + 1);
-		}
-	}
-	return higherPair;
+    std::vector<int> sortedHigherPair = higherPair;
+    if (small[0] != -1)
+        higherPair.insert(higherPair.begin(), small[0]);
+    std::vector<int> order = buildJacobOrder(small.size());
+    for (size_t i = 0; i < order.size(); i++)
+    {
+        size_t position  = std::find(higherPair.begin(), higherPair.end(), sortedHigherPair[order[i]]) - higherPair.begin();
+        if (small[order[i]] != -1)
+        {
+            binaryInsert(higherPair, small[order[i]], position + 1);
+        }
+    }
+    return higherPair;
 }
 
 std::vector<int> PmergeMe::getVec()
@@ -336,51 +333,47 @@ std::deque<int> PmergeMe::highPair(std::deque<std::pair<int, int> > &vecPair)
 	}
 	return pair;
 }
-
 std::deque<int> PmergeMe::sortDeque(std::deque<int> grands)
 {
-	std::deque<std::pair<int, int> > vecPair;
-	std::deque<int> orginalHigherPair;
-	std::deque<int> higherPair;
-	std::deque<int> small;
-	if (grands.size() <= 1)
-		return grands;
-	vecPair = makePair(grands);
-	doGreatPair(vecPair);
-	small = lowPair(vecPair);
-	higherPair = highPair(vecPair);
-	orginalHigherPair = higherPair;
-	higherPair = sortDeque(higherPair);
-	std::deque<bool> used(orginalHigherPair.size(), false);
+    std::deque<std::pair<int, int> > vecPair;
+    std::deque<int> orginalHigherPair;
+    std::deque<int> higherPair;
+    std::deque<int> small;
+
+    if (grands.size() <= 1)
+        return grands;
+    vecPair = makePair(grands);
+    doGreatPair(vecPair);
+    small = lowPair(vecPair);
+    higherPair = highPair(vecPair);
+    orginalHigherPair = higherPair;
+    higherPair = sortDeque(higherPair);
     std::deque<int> newSmall;
     for (size_t i = 0; i < higherPair.size(); i++)
     {
         for (size_t j = 0; j < orginalHigherPair.size(); j++)
         {
-            if (orginalHigherPair[j] == higherPair[i] && used[j] == false)
+            if (orginalHigherPair[j] == higherPair[i])
             {
                 newSmall.push_back(small[j]);
-                used[j] = true;
                 break;
             }
         }
     }
     small = newSmall;
-	std::deque<int> sortedHigherPair = higherPair;
-	if (small[0] != -1)
-		higherPair.insert(higherPair.begin() , small[0]);
-	
-	std::deque<int> order = buildJacobOrderDeque(small.size());
-	
-	for (size_t i = 0; i < order.size(); i++)
-	{
-		size_t position  = std::find(higherPair.begin(), higherPair.end(), sortedHigherPair[order[i]]) - higherPair.begin();
-		if (small[order[i]] != -1)
-		{
-			binaryInsert(higherPair, small[order[i]], position + 1);
-		}
-	}
-	return higherPair;
+    std::deque<int> sortedHigherPair = higherPair;
+    if (small[0] != -1)
+        higherPair.insert(higherPair.begin(), small[0]);
+    std::deque<int> order = buildJacobOrderDeque(small.size());
+    for (size_t i = 0; i < order.size(); i++)
+    {
+        size_t position  = std::find(higherPair.begin(), higherPair.end(), sortedHigherPair[order[i]]) - higherPair.begin();
+        if (small[order[i]] != -1)
+        {
+            binaryInsert(higherPair, small[order[i]], position + 1);
+        }
+    }
+    return higherPair;
 }
 
 std::deque<int> PmergeMe::getDeque()
