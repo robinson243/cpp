@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 22:50:48 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/24 15:51:33 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/04 01:45:51 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@
 
 class BitcoinExchange {
   private:
-  public:
 	std::list<std::pair<std::string, std::string> > input_data;
 	std::map<std::string, std::string> other_data;
+  public:
 	BitcoinExchange();
 	~BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange &other);
 	BitcoinExchange &operator=(const BitcoinExchange &other);
+	std::list<std::pair<std::string, std::string> >getInputData();
+	std::map<std::string, std::string> getOtherData();
+	int data_add(std::string file);
+	int input_add(std::string file);
+	void validate_value();
+	bool isLeapYear(int year);
+	bool isValidDate(int year, int month, int day);
+	void validate_date();
+	void findLowerBound();
 };
-
-int data_add(std::string file, BitcoinExchange &map);
-int input_add(std::string file, BitcoinExchange &map);
-void validate_value(BitcoinExchange &map);
-bool isLeapYear(int year);
-bool isValidDate(int year, int month, int day);
-void validate_date(BitcoinExchange &map);
-void findLowerBound(BitcoinExchange &map);

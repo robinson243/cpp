@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 11:46:46 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/25 14:25:01 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/04 01:46:52 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,17 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 	return *this;
 }
 
-int data_add(std::string file, BitcoinExchange &map)
+std::list<std::pair<std::string, std::string> > BitcoinExchange:: getInputData()
+{
+	return input_data;
+}
+std::map<std::string, std::string> BitcoinExchange:: getOtherData()
+{
+	return other_data;
+}
+
+
+int  BitcoinExchange::data_add(std::string file)
 {
 	std::ifstream myFile(file.c_str());
 	if (!myFile.is_open())
@@ -45,14 +55,14 @@ int data_add(std::string file, BitcoinExchange &map)
 	{
 		content += line;
 		content += '\n';
-		map.other_data.insert(std::pair<std::string, std::string>(
+		this->other_data.insert(std::pair<std::string, std::string>(
 			line.substr(0, 10), line.substr(11, line.length())));
 	}
 	myFile.close();
 	return 0;
 }
 
-int input_add(std::string file, BitcoinExchange &map)
+int  BitcoinExchange::input_add(std::string file)
 {
 	std::ifstream myFile(file.c_str());
 	if (!myFile.is_open())
@@ -62,18 +72,20 @@ int input_add(std::string file, BitcoinExchange &map)
 	getline(myFile, line);
 	while (getline(myFile, line))
 	{
+		if (line.length() < 12) 
+			continue;
 		content += line;
 		content += '\n';
 		size_t pipe_pos = line.find('|');
 		if (pipe_pos == std::string::npos || pipe_pos < 11 || pipe_pos + 2 >= line.length())
 		{
-			map.input_data.push_back(std::pair<std::string,
+			this->input_data.push_back(std::pair<std::string,
 				std::string>(line, "Error: bad input => " + line));
 			continue;
 		}
 		std::string date = line.substr(0, 10);
 		std::string value = line.substr(pipe_pos + 2, line.length());
-		map.input_data.push_back(std::pair<std::string, std::string>(date, value));
+		this->input_data.push_back(std::pair<std::string, std::string>(date, value));
 	}
 	// for (std::list<std::pair<std::string, std::string> >::iterator it =
 	// 		 map.input_data.begin();
@@ -85,9 +97,9 @@ int input_add(std::string file, BitcoinExchange &map)
 	return 0;
 }
 
-void validate_value(BitcoinExchange &map)
+void  BitcoinExchange::validate_value()
 {
-	std::list<std::pair<std::string, std::string> > &m = map.input_data;
+	std::list<std::pair<std::string, std::string> > &m = this->input_data;
 	for (std::list<std::pair<std::string, std::string> >::iterator it =
 			 m.begin();
 		 it != m.end();
@@ -121,12 +133,12 @@ void validate_value(BitcoinExchange &map)
 	}
 }
 
-bool isLeapYear(int year)
+bool  BitcoinExchange::isLeapYear(int year)
 {
 	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-bool isValidDate(int year, int month, int day)
+bool  BitcoinExchange::isValidDate(int year, int month, int day)
 {
 	// the 1st element represents the number of days in January,
 	// second for Feb and so on, the last element represents days in Dec
@@ -156,9 +168,9 @@ bool isValidDate(int year, int month, int day)
 	return true;
 }
 
-void validate_date(BitcoinExchange &map)
+void  BitcoinExchange::validate_date()
 {
-	std::list<std::pair<std::string, std::string> > &m = map.input_data;
+	std::list<std::pair<std::string, std::string> > &m = this->input_data;
 	for (std::list<std::pair<std::string, std::string> >::iterator it =
 			 m.begin();
 		 it != m.end();
@@ -177,10 +189,10 @@ void validate_date(BitcoinExchange &map)
 	}
 }
 
-void findLowerBound(BitcoinExchange &map)
+void  BitcoinExchange::findLowerBound()
 {
-	std::map<std::string, std::string> &m_other = map.other_data;
-	std::list<std::pair<std::string, std::string> > &m_input = map.input_data;
+	std::map<std::string, std::string> &m_other = this->other_data;
+	std::list<std::pair<std::string, std::string> > &m_input = this->input_data;
 	std::map<std::string, std::string>::iterator itOther;
 	if (m_other.empty())
     {
