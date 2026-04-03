@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/29 23:47:44 by romukena          #+#    #+#             */
-/*   Updated: 2026/04/02 17:33:14 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:50:08 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,8 +281,6 @@ bool PmergeMe::initDeque(const char *s)
 			std::string strToAdd = str.substr(first, (last - first));
 			long val = std::strtol(strToAdd.c_str(),NULL, 10 );
 			if (!isParam(strToAdd) || val > INT_MAX)
-				return false;
-			if (!isParam(strToAdd))
 				return false;
 			this->deque.push_back(atoi(strToAdd.c_str()));
 		}
