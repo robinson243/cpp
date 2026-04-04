@@ -6,7 +6,7 @@
 /*   By: romukena <romukena@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/25 15:48:35 by romukena          #+#    #+#             */
-/*   Updated: 2026/03/26 17:23:28 by romukena         ###   ########.fr       */
+/*   Updated: 2026/04/04 02:07:47 by romukena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,70 +14,87 @@
 
 RPN::RPN() {};
 RPN::~RPN() {};
-RPN::RPN(const RPN &other) {
-	if (this != &other) {
+RPN::RPN(const RPN &other)
+{
+	if (this != &other)
+	{
 		this->array = other.array;
 	}
 }
 
-RPN &RPN ::operator=(const RPN &other) {
-	if (this != &other) {
+RPN &RPN ::operator=(const RPN &other)
+{
+	if (this != &other)
+	{
 		this->array = other.array;
 	}
 	return *this;
 }
 
-std::stack<std::string> RPN::getArray() {
+std::stack<std::string> RPN::getArray()
+{
 	return this->array;
 }
 
-RPN ::RPN(char *s) {
+RPN ::RPN(char *s)
+{
 	std::string str(s);
 	size_t first;
 	size_t last;
 	size_t i = 0;
-	while (str[i]) {
-		while (isspace(str[i]) != 0 && str[i]) {
+	while (str[i])
+	{
+		while (isspace(str[i]) != 0 && str[i])
+		{
 			i++;
 		}
-		if (isspace(str[i]) == 0) {
+		if (isspace(str[i]) == 0)
+		{
 			first = i;
 		}
-		while (isspace(str[i]) == 0 && str[i]) {
+		while (isspace(str[i]) == 0 && str[i])
+		{
 			i++;
 		}
-		if (isspace(str[i]) != 0 || str[i] == '\0') {
+		if (isspace(str[i]) != 0 || str[i] == '\0')
+		{
 			last = i;
 			std::string strToAdd = str.substr(first, (last - first));
 			this->array.push(strToAdd);
 		}
-		while (isspace(str[i]) != 0) {
+		while (isspace(str[i]) != 0)
+		{
 			i++;
 		}
 	}
 };
 
-void RPN::showElement() {
+void RPN::showElement()
+{
 	RPN tmp(*this);
 	std::stack<std::string> v = tmp.getArray();
 
 	std::cout << "my array stack" << std::endl;
-	while (!v.empty()) {
+	while (!v.empty())
+	{
 		std::cout << v.top() << std::endl;
 		v.pop();
 	}
 };
 
-bool isInt(std::string a) {
+bool isInt(std::string a)
+{
 	if (a.length() > 1)
 		return false;
-	if (isdigit(a[0])) {
+	if (isdigit(a[0]))
+	{
 		return true;
 	}
 	return false;
 }
 
-bool isOperator(std::string a) {
+bool isOperator(std::string a)
+{
 	if (a.length() > 1)
 		return false;
 	if ("+" == a || "-" == a || "/" == a || "*" == a)
@@ -85,10 +102,12 @@ bool isOperator(std::string a) {
 	return false;
 }
 
-void RPN::goodOrder() {
+void RPN::goodOrder()
+{
 	std::stack<std::string> &s = this->array;
 	std::stack<std::string> temp;
-	while (!s.empty()) {
+	while (!s.empty())
+	{
 		temp.push(s.top());
 		s.pop();
 	}
@@ -96,10 +115,13 @@ void RPN::goodOrder() {
 	s = temp;
 }
 
-bool RPN::isValid() {
+bool RPN::isValid()
+{
 	std::stack<std::string> v = this->getArray();
-	while (!v.empty()) {
-		if (!isInt(v.top()) && !isOperator(v.top())) {
+	while (!v.empty())
+	{
+		if (!isInt(v.top()) && !isOperator(v.top()))
+		{
 			return false;
 		}
 		v.pop();
@@ -107,35 +129,50 @@ bool RPN::isValid() {
 	return true;
 }
 
-void RPN::solution() {
+void RPN::solution()
+{
 	this->goodOrder();
 	std::stack<std::string> v = this->array;
-	std::stack<std::string> o;
-	while (!v.empty()) {
+	std::stack<int> o;
+	while (!v.empty())
+	{
 		if (isInt(v.top()))
-			o.push(v.top());
-		else {
-			std::string a = o.top();
+			o.push(atoi(v.top().c_str()));
+		else
+		{
+			if (o.size() < 2)
+			{
+				std::cerr << "Error" << std::endl;
+				return;
+			}
+			int a = o.top();
 			o.pop();
-			std::string b = o.top();
+			int b = o.top();
 			o.pop();
-			std::ostringstream s;
-			if (v.top() == "+") {
-				int num = atoi(b.c_str()) + atoi(a.c_str());
-				s << num;
-				o.push(s.str());
-			} else if (v.top() == "-") {
-				int num = atoi(b.c_str()) - atoi(a.c_str());
-				s << num;
-				o.push(s.str());
-			} else if (v.top() == "*") {
-				int num = atoi(b.c_str()) * atoi(a.c_str());
-				s << num;
-				o.push(s.str());
-			} else if (v.top() == "/") {
-				int num = atoi(b.c_str()) / atoi(a.c_str());
-				s << num;
-				o.push(s.str());
+			if (v.top() == "+")
+			{
+				int num = b + a;
+				o.push(num);
+			}
+			else if (v.top() == "-")
+			{
+				int num = b - a;
+				o.push(num);
+			}
+			else if (v.top() == "*")
+			{
+				int num = b * a;
+				o.push(num);
+			}
+			else if (v.top() == "/")
+			{
+				if (a == 0)
+				{
+					std::cerr << "Error" << std::endl;
+					return;
+				}
+				int num = b / a;
+				o.push(num);
 			}
 		}
 		v.pop();
@@ -143,7 +180,7 @@ void RPN::solution() {
 	if (o.size() > 1)
 	{
 		std::cerr << "Error" << std::endl;
-		return ;	
+		return;
 	}
 	std::cout << o.top() << std::endl;
 }
